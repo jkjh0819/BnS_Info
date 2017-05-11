@@ -1,20 +1,17 @@
 //
-//  TacticTableViewController.swift
+//  DetailTableViewController.swift
 //  BnS_Info
 //
-//  Created by 표영권 on 2017. 5. 7..
+//  Created by Jihye Jegal on 2017. 5. 10..
 //  Copyright © 2017년 Jihye Jegal. All rights reserved.
 //
 
 import UIKit
 
-class TacticTableViewController: UITableViewController {
+class DetailTableViewController: UITableViewController {
 
-    @IBOutlet weak var characterName: UITextField!
+    var character:Character?
     
-    @IBAction func CheckTeam(_ sender: Any) {
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,18 +36,22 @@ class TacticTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        
-        // 캐릭터당 팀 갯수 만큼 row만들도록 수정해야 함.
-        return sampleData.characters.count
+        guard let rowCount = sampleData.characters[0].tactic?.count else {
+            return 0
+        }
+        return rowCount
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tacticCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = "검은 마천루"
-        
+        if let partyText = character?.tactic?[indexPath.row].party {
+            if let roleText = character?.tactic?[indexPath.row].role {
+                cell.textLabel?.text = String(partyText) + "파티, " + roleText
+            }
+        }
         return cell
     }
     
@@ -90,20 +91,14 @@ class TacticTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "DetailSegue" {
-            if let destination = segue.destination as? DetailTableViewController {
-                if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
-                    destination.character = sampleData.characters[selectedIndex] as Character
-                }
-            }
-        }
     }
+    */
 
 }
