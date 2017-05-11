@@ -60,7 +60,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tacticCell" textLabel="6R7-KM-xJe" detailTextLabel="nlv-f9-mDf" style="IBUITableViewCellStyleValue1" id="sTh-ZI-VJv">
-                                <rect key="frame" x="0.0" y="152" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="151.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sTh-ZI-VJv" id="J63-rR-uCJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -111,7 +111,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Oj-PZ-rfR" id="EDa-19-4gQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -171,6 +171,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPB-d5-Yrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1290" y="462"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="JiB-wl-nEj">
+            <objects>
+                <viewControllerPlaceholder id="CGk-TA-vsX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J2o-aq-Tqi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-456" y="436"/>
         </scene>
         <!--공략 보기-->
         <scene sceneID="0EH-Up-6wv">
