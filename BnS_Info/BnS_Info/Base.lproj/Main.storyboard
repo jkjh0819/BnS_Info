@@ -14,9 +14,15 @@
         <scene sceneID="YuB-so-gSn">
             <objects>
                 <navigationController id="rxx-BG-ful" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4mM-Rc-6oW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4mM-Rc-6oW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="xfc-eP-8bK" kind="relationship" relationship="rootViewController" id="bwR-aa-B8G"/>
@@ -44,7 +50,7 @@
                                     <constraint firstAttribute="width" constant="149" id="xtS-G7-yAk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.46110588590515933" green="0.70259406120744128" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.87369130710659904" green="0.37953567268477023" blue="0.10180761967757569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNj-6b-Usa">
@@ -78,6 +84,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="xiI-mw-EAS" secondAttribute="trailing" constant="85" id="1ml-rN-kbw"/>
                             <constraint firstAttribute="trailing" secondItem="CNj-6b-Usa" secondAttribute="trailing" id="3Tg-rW-5w4"/>
@@ -120,6 +127,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKF-Op-A9J">
                                 <rect key="frame" x="325" y="83" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.87369130710659904" green="0.37953567268477023" blue="0.10180761967757569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ha8-fr-Osx">
                                 <rect key="frame" x="0.0" y="126" width="375" height="541"/>
@@ -190,6 +198,10 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZv-RK-Ai0">
                                     <rect key="frame" x="314" y="66" width="22" height="22"/>
+                                    <color key="tintColor" red="0.87369130710659904" green="0.37953567268477023" blue="0.10180761967757569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal">
+                                        <color key="titleColor" red="0.87369130710659904" green="0.37953567268477023" blue="0.10180761967757569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                     <connections>
                                         <action selector="CheckTeam:" destination="xVo-WL-3sg" eventType="touchUpInside" id="Iok-oD-Was"/>
                                         <segue destination="rxx-BG-ful" kind="presentation" id="8pK-sC-bCp"/>
@@ -201,7 +213,7 @@
                                         <constraint firstAttribute="width" constant="173" id="ZQ8-El-dvg"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.87369130710659904" green="0.37953567268477023" blue="0.10180761967757569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -220,7 +232,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tacticCell" textLabel="6R7-KM-xJe" detailTextLabel="nlv-f9-mDf" style="IBUITableViewCellStyleValue1" id="sTh-ZI-VJv">
-                                <rect key="frame" x="0.0" y="151.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="152" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sTh-ZI-VJv" id="J63-rR-uCJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -292,9 +304,15 @@
             <objects>
                 <navigationController id="wTJ-at-fGr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="택틱 보기" image="ic_rowing" id="hvh-8E-kjG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W6T-3d-qJ1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="W6T-3d-qJ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="xVo-WL-3sg" kind="relationship" relationship="rootViewController" id="oxG-Sr-pUd"/>
@@ -391,6 +409,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGE-l3-lyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -405,7 +424,10 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="53f-Ct-pOc">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="wTJ-at-fGr" kind="relationship" relationship="viewControllers" id="FfQ-3n-86s"/>
