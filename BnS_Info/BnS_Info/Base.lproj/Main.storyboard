@@ -383,7 +383,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0d-Ta-XNt">
                                 <rect key="frame" x="68" y="303" width="77" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6v6-s0-9uV">
@@ -407,15 +407,15 @@
                                     <segue destination="zMm-FO-mhs" kind="show" id="rIf-ID-ecT"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BladeAndSoul" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-f3-XFC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-bns-footer" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-f3-XFC">
                                 <rect key="frame" x="39" y="105" width="297" height="133"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="133" id="P0C-eQ-I8I"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gi3-f3-XFC" firstAttribute="top" secondItem="iRg-7W-zFg" secondAttribute="bottom" constant="85" id="8So-cf-lVo"/>
                             <constraint firstItem="r0d-Ta-XNt" firstAttribute="top" secondItem="gi3-f3-XFC" secondAttribute="bottom" constant="65" id="8mS-pt-qfe"/>
@@ -462,8 +462,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BladeAndSoul" width="720" height="338"/>
         <image name="ic_find_in_page" width="24" height="24"/>
         <image name="ic_rowing" width="24" height="24"/>
+        <image name="logo-bns-footer" width="782" height="381"/>
     </resources>
 </document>
