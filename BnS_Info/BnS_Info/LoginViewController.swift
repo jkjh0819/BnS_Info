@@ -30,13 +30,7 @@ class LoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "LoginSegue" {
-            if let destination = segue.destination as? TacticTableViewController {
-                if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
-                    destination.character = sampleData.characters[selectedIndex] as Character
-                }
-            }
-        }
+        
     }
 
 }
