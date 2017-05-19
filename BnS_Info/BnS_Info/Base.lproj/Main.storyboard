@@ -404,7 +404,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="로그인"/>
                                 <connections>
-                                    <segue destination="zMm-FO-mhs" kind="show" identifier="LoginSegue" id="rr0-BO-aWc"/>
+                                    <segue destination="zMm-FO-mhs" kind="show" id="rIf-ID-ecT"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BladeAndSoul" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-f3-XFC">
