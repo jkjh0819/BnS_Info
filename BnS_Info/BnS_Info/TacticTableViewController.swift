@@ -10,7 +10,8 @@ import UIKit
 
 class TacticTableViewController: UITableViewController {
 
-    @IBOutlet weak var characterName: UITextField!
+   
+    @IBOutlet weak var characterName: UILabel!
     
     @IBAction func CheckTeam(_ sender: Any) {
         
