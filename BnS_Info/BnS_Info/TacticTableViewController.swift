@@ -105,5 +105,5 @@ class TacticTableViewController: UITableViewController {
             }
         }
     }
-
+    
 }
