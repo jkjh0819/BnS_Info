@@ -28,9 +28,21 @@ class LoginViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "LoginSegue" {
+            if let tab = segue.destination as? UITabBarController{
+                print("here1")
+                if let nav = tab.viewControllers?[0] as? UINavigationController {
+                    print("here2")
+                    if let dest = nav.topViewController as? TacticTableViewController {
+                        dest.characterName.text = self.characterName.text
+                        
+                    }
+                }
+            }
+        }
         
     }
-
 }
