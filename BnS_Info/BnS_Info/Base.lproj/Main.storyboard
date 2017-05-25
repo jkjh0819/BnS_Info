@@ -290,7 +290,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Oj-PZ-rfR" id="EDa-19-4gQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -411,7 +411,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="로그인"/>
                                 <connections>
-                                    <segue destination="zMm-FO-mhs" kind="show" id="rIf-ID-ecT"/>
+                                    <segue destination="zMm-FO-mhs" kind="custom" customClass="right" customModule="BnS_Info" customModuleProvider="target" id="rIf-ID-ecT"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-bns-footer" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-f3-XFC">
