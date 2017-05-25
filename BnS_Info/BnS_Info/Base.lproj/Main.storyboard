@@ -338,11 +338,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vx9-dL-zZE" id="Hdw-vO-mLV">
-<<<<<<< HEAD
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-=======
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
->>>>>>> 2e9854d8f902c58d14d1990b9aa69b94bbe21c29
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -402,11 +398,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwp-62-1zZ">
-                                <rect key="frame" x="164" y="361" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-=======
+
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwp-62-1zZ">
                                 <rect key="frame" x="145" y="361" width="86" height="32"/>
                                 <constraints>
@@ -414,7 +406,6 @@
                                     <constraint firstAttribute="width" constant="86" id="zr5-eD-h7j"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
->>>>>>> 2e9854d8f902c58d14d1990b9aa69b94bbe21c29
                                 <state key="normal" title="로그인"/>
                                 <connections>
                                     <segue destination="zMm-FO-mhs" kind="show" id="rIf-ID-ecT"/>
