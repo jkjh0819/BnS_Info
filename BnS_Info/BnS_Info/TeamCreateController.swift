@@ -10,6 +10,10 @@ import UIKit
 
 class TeamCreateController: UIViewController {
 
+    @IBAction func BackToMain(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBOutlet weak var leader: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
