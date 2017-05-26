@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //1.메인 스토리보드에 접근
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //2.그 메인 스토리보드에서 로그인 뷰를 찾아서 인스턴스화
+        let lgv = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+        self.window?.rootViewController?.addChildViewController(lgv)
+        self.window?.rootViewController?.present(lgv, animated: true, completion: nil)
+        
         return true
     }
 
