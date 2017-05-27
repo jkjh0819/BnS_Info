@@ -16,14 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //self.window = UIWindow(frame: UIScreen.main.bounds)
         
         //1.메인 스토리보드에 접근
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let lgv = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView") as? LoginViewController {
+            if let w = self.window, let rootViewController = w.rootViewController {
+                w.rootViewController?.addChildViewController(lgv)
+                var currentController = rootViewController
+                while let presentedController = currentController.presentedViewController {
+                    currentController = presentedController // top view까지 이동
+                }
+                currentController.present(lgv, animated: true, completion: nil)
+            }
+        }
         
         //2.그 메인 스토리보드에서 로그인 뷰를 찾아서 인스턴스화
-        let lgv = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
-        self.window?.rootViewController?.addChildViewController(lgv)
-        self.window?.rootViewController?.present(lgv, animated: true, completion: nil)
+        
+        
+        //self.window?.rootViewController = lgv
+        //self.window?.makeKeyAndVisible()
+        //self.window?.rootViewController?.addChildViewController(lgv)
+        //self.window?.rootViewController?.present(lgv, animated: true, completion: nil)
+        
         
         return true
     }

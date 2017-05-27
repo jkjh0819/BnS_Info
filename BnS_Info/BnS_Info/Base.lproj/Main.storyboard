@@ -305,7 +305,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Oj-PZ-rfR" id="EDa-19-4gQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -357,7 +357,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vx9-dL-zZE" id="Hdw-vO-mLV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -378,7 +378,7 @@
             <objects>
                 <navigationController id="sIc-qE-kOf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="공략 보기" image="ic_find_in_page" id="O6Q-nS-egR"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HAN-xi-j0c">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HAN-xi-j0c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -429,6 +429,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="로그인"/>
+                                <connections>
+                                    <segue destination="xVo-WL-3sg" kind="custom" customClass="Unwind_left" id="agK-bq-WIt"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-bns-footer" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-f3-XFC">
                                 <rect key="frame" x="39" y="105" width="297" height="133"/>
@@ -489,4 +492,7 @@
         <image name="ic_rowing" width="24" height="24"/>
         <image name="logo-bns-footer" width="782" height="381"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="agK-bq-WIt"/>
+    </inferredMetricsTieBreakers>
 </document>
