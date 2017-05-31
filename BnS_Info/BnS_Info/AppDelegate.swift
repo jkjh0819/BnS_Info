@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //self.window = UIWindow(frame: UIScreen.main.bounds)
-        
+        /*
         //1.메인 스토리보드에 접근
         if let lgv = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView") as? LoginViewController {
             if let w = self.window, let rootViewController = w.rootViewController {
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.window?.rootViewController?.addChildViewController(lgv)
         //self.window?.rootViewController?.present(lgv, animated: true, completion: nil)
         
-        
+        */
         return true
     }
 
