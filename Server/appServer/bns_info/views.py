@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 import json
 import hashlib
 import time
 
 # Create your views here.
 def index(request):
-	return HttpResponse("<h1>BnS Information Service</h1>")
+	test = {'test':1}
+	return JsonResponse(test)
+	#return HttpResponse("<h1>BnS Information Service</h1>")
 
 #로그인 해서 소속 정보 전달.
 def login(request):
@@ -19,10 +22,8 @@ def login(request):
 		team = Team.objects.filter(teamNum=character['teamNum'])
 		teamDungeonType = Dungeon.objects.filter(dType=team['dType'])
 
-		temp = {character['teamNum']:teamDungeonType['dType']}
-
-		retValue = json.dump(temp)
-		return HttpResponse(retValue)
+		retValue = {character['teamNum']:teamDungeonType['dType']}
+		return JsonResponse(retValue, safe=False)
 		
 	else:
 		return HttpResponse('Request is not POST method.')
@@ -36,33 +37,35 @@ def getRoleNum(request):
 		tactics = Tactics.objects.filter(teamNum=receivedData['teamNum'], cName=receivedData['cName'], dType=receivedData['dType'])
 		role = {tactics['namedNum']:tactics['role']}
 
-		retValue = json.dump(role)
-		return HttpResponse(retValue)
+		return JsonResponse(role, safe=False)
 
 	else:
 		return HttpResponse('Request is not POST method.')
-'''
+
 #팀 생성
 def setTeam(request):
 	if request.method == 'POST':
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
-		teamLeader = receivedData['teamLeader']
-		teamDungeonType = receivedData['dType']
+		Leader = receivedData['teamLeader']
+		DungeonType = receivedData['dType']
 
 		teamNumber = hashlib.md5()
-		hashKey = teamLeader + teamDungeonType + time.time()
+		hashKey = Leader + DungeonType + time.time()
 		teamNumber.update(hashKey)
 
+		newTeam = Team(teamLeader=Leader,
+			teamNum=teamNumber,
+			dType=DungeonType)
+		newTeam.save()
 
+		return HttpResponse('done')
 
-
-
-
-
-
-
+	else:
+		return HttpResponse('error')
+'''
+#팀 멤버 추가
 def setTeamMember(request):
 	if request.method == 'POST':
 		data = request.body.decode("utf-8")
@@ -70,9 +73,17 @@ def setTeamMember(request):
 
 		characterName = receivedData['characterName']
 		teamNumber = receivedData['teamNumber']
-		teamLeader = receivedData['teamLeader']
-		
-		if 
+		cRole = receivedData['role']
+		DungeonType = receivedData['dType']
+
+		newRole = Tactics(cName=characterName,
+			teamNum=teamNumber,
+			role=cRole,
+			dType=DungeonType,
+			namedNum=None)
+		newRole.save()
+
+		return HttpResponse('done')
 
 
 	else:
