@@ -5,37 +5,40 @@ import json
 
 class Character(models.Model):
     name = models.TextField(blank=True, null=True)
-    teamnum = models.IntegerField(db_column='teamNum', blank=True, null=True)  # Field name made lowercase.
+    teamNum = models.IntegerField(db_column='teamNum', blank=True, null=True)  # Field name made lowercase.
     id = models.IntegerField(blank=True, primary_key=True)
 
     class Meta:
         db_table = 'Character'
 
+    def __unicode__(self):
+        return "%s"%(self.name)
+
 
 class Dungeon(models.Model):
-    dtype = models.IntegerField(db_column='dType', blank=True, null=True)  # Field name made lowercase.
-    namednum = models.IntegerField(db_column='namedNum', blank=True, null=True)  # Field name made lowercase.
+    dType = models.IntegerField(db_column='dType', blank=True, null=True)  # Field name made lowercase.
+    namedNum = models.IntegerField(db_column='namedNum', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'Dungeon'
 
 
 class Tactics(models.Model):
-    teamnum = models.IntegerField(db_column='teamNum', blank=True, null=True)  # Field name made lowercase.
+    teamNum = models.IntegerField(db_column='teamNum', blank=True, null=True)  # Field name made lowercase.
     role = models.IntegerField(blank=True, null=True)
-    cname = models.TextField(db_column='cName', blank=True, null=True)  # Field name made lowercase.
-    dtype = models.IntegerField(db_column='dType', blank=True, null=True)  # Field name made lowercase.
+    cName = models.TextField(db_column='cName', blank=True, null=True)  # Field name made lowercase.
+    dType = models.IntegerField(db_column='dType', blank=True, null=True)  # Field name made lowercase.
     id = models.IntegerField(blank=True, primary_key=True)
-    namednum = models.IntegerField(db_column='namedNum', blank=True, null=True)  # Field name made lowercase.
+    namedNum = models.IntegerField(db_column='namedNum', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'Tactics'
 
 
 class Team(models.Model):
-    teamleader = models.TextField(db_column='teamLeader', blank=True, null=True)  # Field name made lowercase.
-    teamnum = models.IntegerField(db_column='teamNum', blank=True, null=True)  # Field name made lowercase.
-    dtype = models.IntegerField(db_column='dType', blank=True, null=True)  # Field name made lowercase.
+    teamLeader = models.TextField(db_column='teamLeader', blank=True, null=True)  # Field name made lowercase.
+    teamNum = models.IntegerField(db_column='teamNum', blank=True, null=True)  # Field name made lowercase.
+    dType = models.IntegerField(db_column='dType', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'Team'
