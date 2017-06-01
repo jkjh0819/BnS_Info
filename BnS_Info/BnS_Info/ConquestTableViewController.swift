@@ -66,7 +66,8 @@ class ConquestTableViewController: UITableViewController {
         }
         
         if url != nil{
-            UIApplication.shared.openURL(url! as URL)
+            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+            //UIApplication.shared.openURL(url! as URL)
         }
 
     }

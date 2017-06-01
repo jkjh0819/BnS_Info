@@ -93,6 +93,14 @@ class TacticTableViewController: UITableViewController {
 
     
     // MARK: - Navigation
+    // 로그인 화면의 unwind 목적지가 될 곳
+    @IBAction func unwindToTacticTable(segue:UIStoryboardSegue) {
+        //print("unwind") TODO
+    }
+    
+    @IBAction func unwindToTacticTable2(segue:UIStoryboardSegue) {
+        // 팀 생성 후 돌아오는 액션
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
