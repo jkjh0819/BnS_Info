@@ -13,9 +13,11 @@ class TacticTableViewController: UITableViewController {
    
     @IBOutlet weak var characterName: UILabel!
     
-    @IBAction func CheckTeam(_ sender: Any) {
-        
+    func checkTeam(name:String){
+        self.characterName.text = name
+        //여기에 팀 확인 코드 추가
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
