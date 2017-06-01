@@ -236,7 +236,7 @@
                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
-                                        <segue destination="vgV-dS-fQj" kind="custom" customClass="left" customModule="BnS_Info" customModuleProvider="target" id="EB3-ZT-Op6"/>
+                                        <segue destination="i75-n5-wEj" kind="custom" identifier="Login" customClass="left" customModule="BnS_Info" customModuleProvider="target" id="EB3-ZT-Op6"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHX-iq-psB">
@@ -500,10 +500,17 @@
             </objects>
             <point key="canvasLocation" x="-1092" y="-225"/>
         </scene>
+        <!--LoginView-->
+        <scene sceneID="x9z-Gd-BpH">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="LoginView" storyboardName="LoginView" referencedIdentifier="LoginView" id="i75-n5-wEj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gou-yX-akn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-662" y="-1093"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_find_in_page" width="24" height="24"/>
         <image name="ic_rowing" width="24" height="24"/>
-        <image name="logo-bns-footer" width="782" height="381"/>
     </resources>
 </document>
