@@ -120,7 +120,7 @@
         <!--팀 생성-->
         <scene sceneID="WYq-Lx-fxZ">
             <objects>
-                <viewController id="uHI-Kd-n9u" sceneMemberID="viewController">
+                <viewController id="uHI-Kd-n9u" customClass="MemberSelectViewController" customModule="BnS_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g1k-C1-rcN"/>
                         <viewControllerLayoutGuide type="bottom" id="meV-0C-10l"/>
