@@ -11,10 +11,11 @@ import UIKit
 class DetailTableViewController: UITableViewController {
 
     var character:Character?
+    var DungeonName:String!
     
-    override func viewDidLoad() {
+       override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = DungeonName
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
