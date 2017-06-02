@@ -60,7 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //            }
             rootVC.addChildViewController(lgv)
             if let selectedVC = rootVC.selectedViewController as? UINavigationController , let initialVC = selectedVC.topViewController as? TacticTableViewController{
+                // busy wait
+                // for _ in (0...1000000000) { }
                 initialVC.performSegue(withIdentifier: "Login", sender: nil)
+                //initialVC.present(lgv, animated: true, completion: nil)
             }
             
         }
