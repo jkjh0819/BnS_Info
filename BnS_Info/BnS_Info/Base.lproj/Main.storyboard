@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zMm-FO-mhs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zMm-FO-mhs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -56,8 +56,7 @@
                                 <rect key="frame" x="236" y="581" width="46" height="30"/>
                                 <state key="normal" title="생성"/>
                                 <connections>
-                                    <action selector="MakeTeam:" destination="xfc-eP-8bK" eventType="touchUpInside" id="5gl-Nl-F0i"/>
-                                    <segue destination="uHI-Kd-n9u" kind="presentation" id="ZXb-8O-QJG"/>
+                                    <segue destination="uHI-Kd-n9u" kind="show" identifier="MemberSelect" id="ZXb-8O-QJG"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="팀장" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CG-mB-KFZ">
@@ -143,7 +142,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LY9-Bq-Cbv" kind="unwind" unwindAction="unwindToTeamCreatViewWithSegue:" id="Plk-jG-jjI"/>
+                                    <segue destination="LY9-Bq-Cbv" kind="unwind" unwindAction="unwindToTeamCreatViewWithSegue:" id="F9m-78-5uL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKF-Op-A9J">
@@ -155,7 +154,7 @@
                                 <color key="tintColor" red="0.87369130710659904" green="0.37953567268477023" blue="0.10180761967757569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="완료"/>
                                 <connections>
-                                    <segue destination="LY9-Bq-Cbv" kind="unwind" unwindAction="unwindToTeamCreatViewWithSegue:" id="Wv0-dd-2IT"/>
+                                    <segue destination="LY9-Bq-Cbv" kind="unwind" unwindAction="unwindToTacticTable2WithSegue:" id="HVb-Yz-QON"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dungeon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASN-h2-uhx">
@@ -296,7 +295,7 @@
                                     </state>
                                     <connections>
                                         <action selector="CheckTeam:" destination="xVo-WL-3sg" eventType="touchUpInside" id="Iok-oD-Was"/>
-                                        <segue destination="xfc-eP-8bK" kind="presentation" id="WTK-m8-XbZ"/>
+                                        <segue destination="xfc-eP-8bK" kind="presentation" identifier="TeamCreate" id="WTK-m8-XbZ"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUP-nH-0Nq">
@@ -344,7 +343,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tacticCell" textLabel="6R7-KM-xJe" detailTextLabel="nlv-f9-mDf" style="IBUITableViewCellStyleValue1" id="sTh-ZI-VJv">
-                                <rect key="frame" x="0.0" y="151.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="152" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sTh-ZI-VJv" id="J63-rR-uCJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -398,7 +397,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Oj-PZ-rfR" id="EDa-19-4gQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

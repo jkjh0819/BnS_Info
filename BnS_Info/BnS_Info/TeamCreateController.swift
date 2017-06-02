@@ -10,6 +10,9 @@ import UIKit
 
 class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    var leaderName:String!
+    var dunjeonType:String!
+    
     @IBOutlet weak var leader: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     //11, 21, 22, 23
@@ -19,6 +22,9 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.dismiss(animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        leader.text = leaderName
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,21 +52,26 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(pickerData[row])
+        self.dunjeonType = pickerData[row]
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "MemberSelect" {
+            if let destination = segue.destination as?
+                MemberSelectViewController {
+                destination.dunjeonType = self.dunjeonType
+            }
+        }
     }
-    */
     
-    @IBAction func unwindToTeamCreatView(segue:UIStoryboardSegue) {
-        // TODO
-    }
 
+    @IBAction func unwindToTeamCreatView(segue:UIStoryboardSegue) {
+        
+    }
 }

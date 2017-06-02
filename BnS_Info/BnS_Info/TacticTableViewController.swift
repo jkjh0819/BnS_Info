@@ -95,7 +95,9 @@ class TacticTableViewController: UITableViewController {
     // MARK: - Navigation
     // 로그인 화면의 unwind 목적지가 될 곳
     @IBAction func unwindToTacticTable(segue:UIStoryboardSegue) {
-        //print("unwind") TODO
+        if let sourceViewController = segue.source as? LoginViewController {
+            self.characterName.text = sourceViewController.characterName.text
+        }
     }
     
     @IBAction func unwindToTacticTable2(segue:UIStoryboardSegue) {
@@ -110,9 +112,20 @@ class TacticTableViewController: UITableViewController {
             if let destination = segue.destination as? DetailTableViewController {
                 if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
                     destination.character = sampleData.characters[selectedIndex] as Character
+                    destination.DungeonName = "sample name"
                 }
             }
         }
+        
+        if segue.identifier == "TeamCreate" {
+            if let destination = segue.destination as?TeamCreateController {
+                if let leaderName = self.characterName?.text {
+                    destination.leaderName = leaderName
+                }
+            }
+        }
+        
+        
     }
     
 }
