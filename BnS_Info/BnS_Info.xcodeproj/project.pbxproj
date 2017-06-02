@@ -18,7 +18,6 @@
 		1AB90ABA1ECED82100B7AE04 /* ServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB90AB91ECED82100B7AE04 /* ServerAPI.swift */; };
 		1AB90AD71ECEDB3100B7AE04 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB90AD61ECEDB3100B7AE04 /* LoginViewController.swift */; };
 		4716C55A1EDFF4FA00FE5476 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4716C5581EDFF4FA00FE5476 /* LoginView.storyboard */; };
-		4716C5661EE015E800FE5476 /* MemberSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716C5651EE015E800FE5476 /* MemberSettingViewController.swift */; };
 		4733C1C71EE14DB40089460D /* MemberSettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4733C1C61EE14DB40089460D /* MemberSettingDetailViewController.swift */; };
 		479902D51ED6D17A009DCBF4 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479902D41ED6D17A009DCBF4 /* Segues.swift */; };
 		47B62C131EC45FC200D7405D /* TeamCreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B62C121EC45FC200D7405D /* TeamCreateController.swift */; };
@@ -93,7 +92,6 @@
 		1AB90ABB1ECEDA0600B7AE04 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		1AB90AD61ECEDB3100B7AE04 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4716C5591EDFF4FA00FE5476 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginView.storyboard; sourceTree = "<group>"; };
-		4716C5651EE015E800FE5476 /* MemberSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberSettingViewController.swift; sourceTree = "<group>"; };
 		4733C1C61EE14DB40089460D /* MemberSettingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberSettingDetailViewController.swift; sourceTree = "<group>"; };
 		479902D41ED6D17A009DCBF4 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		47B62C121EC45FC200D7405D /* TeamCreateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCreateController.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 				1A2E04A01EC2EEFC006DAB4E /* DetailTableViewController.swift */,
 				47B62C141EC59F4200D7405D /* ConquestTableViewController.swift */,
 				479902D41ED6D17A009DCBF4 /* Segues.swift */,
-				4716C5651EE015E800FE5476 /* MemberSettingViewController.swift */,
 				4733C1C61EE14DB40089460D /* MemberSettingDetailViewController.swift */,
 			);
 			path = BnS_Info;
@@ -311,7 +308,6 @@
 				479902D51ED6D17A009DCBF4 /* Segues.swift in Sources */,
 				47B62C131EC45FC200D7405D /* TeamCreateController.swift in Sources */,
 				1A2E04991EC2E0ED006DAB4E /* SampleData.swift in Sources */,
-				4716C5661EE015E800FE5476 /* MemberSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -70,7 +70,7 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     
-
+    // 취소 버튼을 누르거나 
     @IBAction func unwindToTeamCreatView(segue:UIStoryboardSegue) {
         
     }
