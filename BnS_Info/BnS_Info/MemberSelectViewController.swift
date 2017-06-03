@@ -14,7 +14,7 @@ class MemberSelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dunjeonType)
+    
         // Do any additional setup after loading the view.
     }
 
@@ -34,4 +34,7 @@ class MemberSelectViewController: UIViewController {
     }
     */
 
+    @IBAction func unwindToMemberSelectView(segue:UIStoryboardSegue) {
+        print("here unwind")// TODO
+    }
 }
