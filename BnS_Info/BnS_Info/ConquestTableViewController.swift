@@ -9,6 +9,12 @@
 import UIKit
 
 class ConquestTableViewController: UITableViewController {
+    
+//    요구사항:
+//    셀에는 이미지, 타이틀, 서브타이틀이 들어간다.
+//    이미지는 해당 던전을 대표하는 이미지,
+//    타이틀은 OOO 공략
+//    서브타이틀은 해도 되고 안 해도 되는데 간단한 스크립션을 넣을 수 있도록.
 
     override func viewDidLoad() {
         super.viewDidLoad()

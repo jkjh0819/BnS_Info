@@ -2,7 +2,7 @@
 //  MemberSelectViewController.swift
 //  BnS_Info
 //
-//  Created by Jihye Jegal on 2017. 5. 26..
+//  Created by Jihye Jegal on 2017. 6. 1..
 //  Copyright © 2017년 Jihye Jegal. All rights reserved.
 //
 
@@ -10,9 +10,11 @@ import UIKit
 
 class MemberSelectViewController: UIViewController {
 
+    var dunjeonType:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         // Do any additional setup after loading the view.
     }
 
@@ -32,4 +34,7 @@ class MemberSelectViewController: UIViewController {
     }
     */
 
+    @IBAction func unwindToMemberSelectView(segue:UIStoryboardSegue) {
+        print("here unwind")// TODO
+    }
 }
