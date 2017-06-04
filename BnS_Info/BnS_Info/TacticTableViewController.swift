@@ -101,10 +101,10 @@ class TacticTableViewController: UITableViewController {
         }
         
         
-        let parameters = ["characterName": self.characterName]
-        let requestUrl = "127.0.0.1:8000/login"
-        
-        Alamofire.request(requestUrl, method: HTTPMethod.post, parameters: parameters as Any, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+        let param = ["characterName": self.characterName.text]
+        let requestUrl = "http://127.0.0.1:8000/login/"
+
+        Alamofire.request(requestUrl, method: .post, parameters: param, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
