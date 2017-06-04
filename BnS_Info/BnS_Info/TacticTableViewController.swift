@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Alamofire
 
 class TacticTableViewController: UITableViewController {
 
-    @IBOutlet weak var characterName: UITextField!
+   
+    @IBOutlet weak var characterName: UILabel!
     
     @IBAction func CheckTeam(_ sender: Any) {
         
@@ -92,6 +94,36 @@ class TacticTableViewController: UITableViewController {
 
     
     // MARK: - Navigation
+    // 로그인 화면의 unwind 목적지가 될 곳
+    @IBAction func unwindToTacticTable(segue:UIStoryboardSegue) {
+        if let sourceViewController = segue.source as? LoginViewController {
+            self.characterName.text = sourceViewController.characterName.text
+        }
+        
+        
+        let param = ["characterName": self.characterName.text]
+        let requestUrl = "http://127.0.0.1:8000/login/"
+
+        Alamofire.request(requestUrl, method: .post, parameters: param, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(_):
+                if response.result.value != nil{
+                    print(response.result.value)
+                }
+                break
+                
+            case .failure(_):
+                print(response.result.error)
+                break
+                
+            }
+        }
+        
+    }
+    
+    @IBAction func unwindToTacticTable2(segue:UIStoryboardSegue) {
+        // 팀 생성 후 돌아오는 액션
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -101,9 +133,20 @@ class TacticTableViewController: UITableViewController {
             if let destination = segue.destination as? DetailTableViewController {
                 if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
                     destination.character = sampleData.characters[selectedIndex] as Character
+                    destination.DungeonName = "sample name"
                 }
             }
         }
+        
+        if segue.identifier == "TeamCreate" {
+            if let destination = segue.destination as?TeamCreateController {
+                if let leaderName = self.characterName?.text {
+                    destination.leaderName = leaderName
+                }
+            }
+        }
+        
+        
     }
-
+    
 }

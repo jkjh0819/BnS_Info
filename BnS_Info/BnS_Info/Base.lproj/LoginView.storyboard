@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="Y2R-c0-Dfj">
+            <objects>
+                <viewController storyboardIdentifier="LoginView" id="vgV-dS-fQj" customClass="LoginViewController" customModule="BnS_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iRg-7W-zFg"/>
+                        <viewControllerLayoutGuide type="bottom" id="ENn-ho-OiF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="78x-xg-P09">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0d-Ta-XNt">
+                                <rect key="frame" x="68" y="303" width="77" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6v6-s0-9uV">
+                                <rect key="frame" x="153" y="307" width="153" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="y4o-TP-7rT"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwp-62-1zZ">
+                                <rect key="frame" x="145" y="361" width="86" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="rBN-7h-XWl"/>
+                                    <constraint firstAttribute="width" constant="86" id="zr5-eD-h7j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="로그인"/>
+                                <connections>
+                                    <segue destination="WMd-Gn-gux" kind="unwind" unwindAction="unwindToTacticTableWithSegue:" id="D9s-Nl-dij"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-bns-footer" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-f3-XFC">
+                                <rect key="frame" x="39" y="105" width="297" height="133"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="P0C-eQ-I8I"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="gi3-f3-XFC" firstAttribute="top" secondItem="iRg-7W-zFg" secondAttribute="bottom" constant="85" id="8So-cf-lVo"/>
+                            <constraint firstItem="r0d-Ta-XNt" firstAttribute="top" secondItem="gi3-f3-XFC" secondAttribute="bottom" constant="65" id="8mS-pt-qfe"/>
+                            <constraint firstItem="Nwp-62-1zZ" firstAttribute="centerX" secondItem="gi3-f3-XFC" secondAttribute="centerX" id="A40-U0-bnX"/>
+                            <constraint firstItem="gi3-f3-XFC" firstAttribute="centerX" secondItem="78x-xg-P09" secondAttribute="centerX" id="GdA-sL-Pjo"/>
+                            <constraint firstItem="6v6-s0-9uV" firstAttribute="leading" secondItem="r0d-Ta-XNt" secondAttribute="trailing" constant="8" symbolic="YES" id="JkH-RI-loU"/>
+                            <constraint firstItem="r0d-Ta-XNt" firstAttribute="centerY" secondItem="6v6-s0-9uV" secondAttribute="centerY" id="L1f-Lw-5Yp"/>
+                            <constraint firstItem="Nwp-62-1zZ" firstAttribute="top" secondItem="6v6-s0-9uV" secondAttribute="bottom" constant="24" id="S55-fe-qeU"/>
+                            <constraint firstItem="6v6-s0-9uV" firstAttribute="top" secondItem="gi3-f3-XFC" secondAttribute="bottom" constant="69" id="XPH-eu-WZs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6v6-s0-9uV" secondAttribute="trailing" constant="53" id="YwG-vn-rrp"/>
+                            <constraint firstItem="gi3-f3-XFC" firstAttribute="leading" secondItem="78x-xg-P09" secondAttribute="leadingMargin" constant="23" id="aJs-mk-kZs"/>
+                            <constraint firstItem="r0d-Ta-XNt" firstAttribute="leading" secondItem="78x-xg-P09" secondAttribute="leadingMargin" constant="52" id="hXq-p6-GGG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="characterName" destination="6v6-s0-9uV" id="1V9-zh-dP4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FGE-l3-lyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="WMd-Gn-gux" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-662" y="-1093"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo-bns-footer" width="782" height="381"/>
+    </resources>
+</document>

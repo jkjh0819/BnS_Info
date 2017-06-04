@@ -11,10 +11,11 @@ import UIKit
 class DetailTableViewController: UITableViewController {
 
     var character:Character?
+    var DungeonName:String!
     
-    override func viewDidLoad() {
+       override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = DungeonName
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,7 +27,9 @@ class DetailTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // TODO : arccodian animation 구현
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

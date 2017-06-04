@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        //1.메인 스토리보드에 접근
+        
+        
+        //2.그 메인 스토리보드에서 로그인 뷰를 찾아서 인스턴스화
+        
+        
+        //self.window?.rootViewController = lgv
+        //self.window?.makeKeyAndVisible()
+        
+        
+        
         return true
     }
 
@@ -35,6 +48,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        if let lgv = UIStoryboard(name: "LoginView", bundle: nil).instantiateViewController(withIdentifier: "LoginView") as? LoginViewController , let rootVC = self.window?.rootViewController as? UITabBarController {
+            //            if let rootViewController = w.rootViewController {
+            //                w.rootViewController?.addChildViewController(lgv)
+            //                var currentController = rootViewController
+            //                while let presentedController = currentController.presentedViewController {
+            //                    currentController = presentedController // top view까지 이동
+            //                }
+            //                currentController.present(lgv, animated: true, completion: nil)
+            //            }
+            rootVC.addChildViewController(lgv)
+            if let selectedVC = rootVC.selectedViewController as? UINavigationController , let initialVC = selectedVC.topViewController as? TacticTableViewController{
+                // busy wait
+                // for _ in (0...1000000000) { }
+                initialVC.performSegue(withIdentifier: "Login", sender: nil)
+                //initialVC.present(lgv, animated: true, completion: nil)
+            }
+            
+        }
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
