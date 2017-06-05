@@ -1,15 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
+from bns_info.models import Character, Dungeon, Tactics, Team
 import json
 import hashlib
 import time
 
 # Create your views here.
 def index(request):
-	test = {'test':1}
-	return JsonResponse(test)
-	#return HttpResponse("<h1>BnS Information Service</h1>")
+	return HttpResponse("<h1>BnS Information Service</h1>")
 
 #로그인 해서 소속 정보 전달.
 def login(request):
@@ -17,12 +16,11 @@ def login(request):
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
-		receivedName = receivedData['characterName']
-		character = Character.objects.filter(name=receivedName)
-		team = Team.objects.filter(teamNum=character['teamNum'])
-		teamDungeonType = Dungeon.objects.filter(dType=team['dType'])
+		character = Character.objects.get(name=receivedName)
+        team = Team.objects.get(teamNum=character.teamNum)
+        teamDungeonType = Dungeon.objects.get(dType=team.dType)
 
-		retValue = {character['teamNum']:teamDungeonType['dType']}
+        retValue = {character.teamNum : teamDungeonType.dType}
 		return JsonResponse(retValue, safe=False)
 		
 	else:
@@ -34,8 +32,8 @@ def getRoleNum(request):
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
-		tactics = Tactics.objects.filter(teamNum=receivedData['teamNum'], cName=receivedData['cName'], dType=receivedData['dType'])
-		role = {tactics['namedNum']:tactics['role']}
+		tactics = Tactics.objects.get(teamNum=receivedData['teamNum'], cName=receivedData['cName'], dType=receivedData['dType'])
+		role = {tactics.namedNum :tactics.role}
 
 		return JsonResponse(role, safe=False)
 
@@ -64,7 +62,7 @@ def setTeam(request):
 
 	else:
 		return HttpResponse('error')
-'''
+
 #팀 멤버 추가
 def setTeamMember(request):
 	if request.method == 'POST':
@@ -85,11 +83,10 @@ def setTeamMember(request):
 
 		return HttpResponse('done')
 
-
 	else:
 		return HttpResponse('error')
 
-'''
+
 		
 
 

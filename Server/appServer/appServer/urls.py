@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^login/', views.login),
     url(r'^requestRole/', views.getRoleNum),
     url(r'^newTeam/', views.setTeam),
-   # url(r'^addMember/', views.setTeamMember)
+    url(r'^addMember/', views.setTeamMember)
 ]
