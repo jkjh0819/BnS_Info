@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from bns_info.models import Character, Dungeon, Tactics, Team
-from django.shortcuts import get_object_or_404
+
 import json
 import hashlib
 import time
@@ -89,8 +89,6 @@ def setTeamMember(request):
 	else:
 		return HttpResponse('error')
 
-
-		
 
 
 
