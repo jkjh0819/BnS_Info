@@ -11,9 +11,6 @@ class Character(models.Model):
     class Meta:
         db_table = 'Character'
 
-    def __unicode__(self):
-        return "%s"%(self.name)
-
 
 class Dungeon(models.Model):
     dType = models.IntegerField(db_column='dType', blank=True, null=True)  # Field name made lowercase.
@@ -42,6 +39,7 @@ class Team(models.Model):
 
     class Meta:
         db_table = 'Team'
+
 
 '''
 
