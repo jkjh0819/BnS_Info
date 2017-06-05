@@ -21,4 +21,8 @@ from bns_info import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
+    url(r'^login/', views.login),
+    url(r'^requestRole/', views.getRoleNum),
+    url(r'^newTeam/', views.setTeam),
+   # url(r'^addMember/', views.setTeamMember)
 ]
