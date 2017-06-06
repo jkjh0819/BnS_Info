@@ -22,12 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="캐릭터명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0d-Ta-XNt">
-                                <rect key="frame" x="68" y="303" width="77" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6v6-s0-9uV">
                                 <rect key="frame" x="153" y="307" width="153" height="30"/>
                                 <constraints>
@@ -43,10 +37,10 @@
                                     <constraint firstAttribute="height" constant="32" id="rBN-7h-XWl"/>
                                     <constraint firstAttribute="width" constant="86" id="zr5-eD-h7j"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="로그인"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="로그인" backgroundImage="login"/>
                                 <connections>
-                                    <segue destination="WMd-Gn-gux" kind="unwind" unwindAction="unwindToTacticTableWithSegue:" id="D9s-Nl-dij"/>
+                                    <segue destination="WMd-Gn-gux" kind="unwind" identifier="unwindLogin" customClass="Unwind_left" customModule="BnS_Info" customModuleProvider="target" unwindAction="unwindToTacticTableWithSegue:" id="D9s-Nl-dij"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-bns-footer" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-f3-XFC">
@@ -55,21 +49,24 @@
                                     <constraint firstAttribute="height" constant="133" id="P0C-eQ-I8I"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="char_name" translatesAutoresizingMaskIntoConstraints="NO" id="AZF-EK-1RD">
+                                <rect key="frame" x="33" y="304" width="108" height="37"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gi3-f3-XFC" firstAttribute="top" secondItem="iRg-7W-zFg" secondAttribute="bottom" constant="85" id="8So-cf-lVo"/>
-                            <constraint firstItem="r0d-Ta-XNt" firstAttribute="top" secondItem="gi3-f3-XFC" secondAttribute="bottom" constant="65" id="8mS-pt-qfe"/>
                             <constraint firstItem="Nwp-62-1zZ" firstAttribute="centerX" secondItem="gi3-f3-XFC" secondAttribute="centerX" id="A40-U0-bnX"/>
                             <constraint firstItem="gi3-f3-XFC" firstAttribute="centerX" secondItem="78x-xg-P09" secondAttribute="centerX" id="GdA-sL-Pjo"/>
-                            <constraint firstItem="6v6-s0-9uV" firstAttribute="leading" secondItem="r0d-Ta-XNt" secondAttribute="trailing" constant="8" symbolic="YES" id="JkH-RI-loU"/>
-                            <constraint firstItem="r0d-Ta-XNt" firstAttribute="centerY" secondItem="6v6-s0-9uV" secondAttribute="centerY" id="L1f-Lw-5Yp"/>
+                            <constraint firstItem="AZF-EK-1RD" firstAttribute="top" secondItem="gi3-f3-XFC" secondAttribute="bottom" constant="66" id="QcD-d0-DLK"/>
                             <constraint firstItem="Nwp-62-1zZ" firstAttribute="top" secondItem="6v6-s0-9uV" secondAttribute="bottom" constant="24" id="S55-fe-qeU"/>
+                            <constraint firstItem="ENn-ho-OiF" firstAttribute="top" secondItem="AZF-EK-1RD" secondAttribute="bottom" constant="326" id="VDC-xV-lG0"/>
                             <constraint firstItem="6v6-s0-9uV" firstAttribute="top" secondItem="gi3-f3-XFC" secondAttribute="bottom" constant="69" id="XPH-eu-WZs"/>
+                            <constraint firstItem="6v6-s0-9uV" firstAttribute="leading" secondItem="AZF-EK-1RD" secondAttribute="trailing" constant="12" id="YRO-aq-gYd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6v6-s0-9uV" secondAttribute="trailing" constant="53" id="YwG-vn-rrp"/>
                             <constraint firstItem="gi3-f3-XFC" firstAttribute="leading" secondItem="78x-xg-P09" secondAttribute="leadingMargin" constant="23" id="aJs-mk-kZs"/>
-                            <constraint firstItem="r0d-Ta-XNt" firstAttribute="leading" secondItem="78x-xg-P09" secondAttribute="leadingMargin" constant="52" id="hXq-p6-GGG"/>
+                            <constraint firstItem="AZF-EK-1RD" firstAttribute="leading" secondItem="78x-xg-P09" secondAttribute="leadingMargin" constant="17" id="gOu-kW-7j9"/>
                         </constraints>
                     </view>
                     <connections>
@@ -83,6 +80,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="char_name" width="207" height="69"/>
+        <image name="login" width="270" height="111"/>
         <image name="logo-bns-footer" width="782" height="381"/>
     </resources>
 </document>
