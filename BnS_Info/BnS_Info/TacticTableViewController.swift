@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class TacticTableViewController: UITableViewController {
 
@@ -98,6 +99,26 @@ class TacticTableViewController: UITableViewController {
         if let sourceViewController = segue.source as? LoginViewController {
             self.characterName.text = sourceViewController.characterName.text
         }
+        
+        
+        let param = ["characterName": self.characterName.text]
+        let requestUrl = "http://127.0.0.1:8000/login/"
+
+        Alamofire.request(requestUrl, method: .post, parameters: param, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(_):
+                if response.result.value != nil{
+                    print(response.result.value)
+                }
+                break
+                
+            case .failure(_):
+                print(response.result.error)
+                break
+                
+            }
+        }
+        
     }
     
     @IBAction func unwindToTacticTable2(segue:UIStoryboardSegue) {
