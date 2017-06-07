@@ -18,11 +18,14 @@ def login(request):
         receivedData = json.loads(data)
 
         receivedName = receivedData['characterName'] 
-        character = Character.objects.get(name=receivedName) 
-        team = Team.objects.get(teamNum=character.teamNum)
-        teamDungeonType = Dungeon.objects.get(dType=team.dType)
+        retValue = {}
 
-        retValue = {character.teamNum : teamDungeonType.dType} 
+        character = Character.objects.filter(name=receivedName)
+        for i in range(0, character.count()):
+        	team = Team.objects.get(teamNum=character[i].teamNum)
+        	teamDungeonType = Dungeon.objects.get(dType=team.dType)
+        	retValue[character[i].teamNum] = teamDungeonType.dType
+
         return JsonResponse(retValue, safe=False)
 
     else: 
