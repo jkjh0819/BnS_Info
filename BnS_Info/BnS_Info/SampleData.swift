@@ -11,10 +11,10 @@ import Foundation
 let sampleData:SampleData = SampleData()
 
 class SampleData {
-    var characters:[Character] = []
+    var characters:[Character_] = []
     
     init() {
-        let character1 = Character(name : "리엘 베르디", teamNumber : 1)
+        let character1 = Character_(name : "리엘 베르디", teamNumber : 1)
         
         let role1 = Macheonroo(party: 1, role: "12시")
         let role2 = Macheonroo(party: 2, role: "5시")
@@ -28,7 +28,7 @@ class SampleData {
     }
 }
 
-class Character {
+class Character_ {
     var name:String
     var teamNumber:Int
     var tactic:[Macheonroo]?

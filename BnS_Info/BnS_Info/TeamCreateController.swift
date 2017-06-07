@@ -15,7 +15,7 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet weak var leader: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
-    //11, 21, 22, 23
+    //11, 21, 22, 23 - "밤의 바람평야","검은 마천루","서자의 안식처", "소용돌이 사원"
     var pickerData = ["밤의 바람평야","검은 마천루","서자의 안식처", "소용돌이 사원"]
     
     @IBAction func BackToMain(_ sender: Any) {

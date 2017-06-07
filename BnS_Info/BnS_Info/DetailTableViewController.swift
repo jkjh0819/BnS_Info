@@ -10,12 +10,12 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
 
-    var character:Character?
-    var DungeonName:String!
+    var dungeonData:Dungeon?
+    var dungeonName:String!
     
        override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = DungeonName
+        self.title = dungeonName
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -50,11 +50,11 @@ class DetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
 
         // Configure the cell...
-        if let partyText = character?.tactic?[indexPath.row].party {
+        /*if let partyText = character?.tactic?[indexPath.row].party {
             if let roleText = character?.tactic?[indexPath.row].role {
                 cell.textLabel?.text = String(partyText) + "파티, " + roleText
             }
-        }
+        }*/
         return cell
     }
     
