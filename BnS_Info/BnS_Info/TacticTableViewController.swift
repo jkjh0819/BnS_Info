@@ -17,16 +17,16 @@ class TacticTableViewController: UITableViewController {
     @IBAction func CheckTeam(_ sender: Any) {
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,17 +41,15 @@ class TacticTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        
         // 캐릭터당 팀 갯수 만큼 row만들도록 수정해야 함.
-        return sampleData.characters.count
+        return character.teams.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tacticCell", for: indexPath)
-
-        // Configure the cell...
-        cell.textLabel?.text = "검은 마천루"
+        print("table view set")
+        cell.textLabel?.text = character.teams[indexPath.row].dungeon.dungeonName
         
         return cell
     }
@@ -96,19 +94,25 @@ class TacticTableViewController: UITableViewController {
     // MARK: - Navigation
     // 로그인 화면의 unwind 목적지가 될 곳
     @IBAction func unwindToTacticTable(segue:UIStoryboardSegue) {
+        print("unwind")
         if let sourceViewController = segue.source as? LoginViewController {
             self.characterName.text = sourceViewController.characterName.text
         }
         
-        
-        let param = ["characterName": self.characterName.text]
-        let requestUrl = "http://127.0.0.1:8000/login/"
-
-        Alamofire.request(requestUrl, method: .post, parameters: param, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text ?? nil], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
-                    print(response.result.value)
+                    //teamNumber:dungeonType
+                    let result = response.result.value as! NSDictionary
+                    let keys = result.allKeys
+                    for key in keys {
+                        let teamNumber = key as! String
+                        let dungeonData = Dungeon(dungeonType: result.value(forKey: key as! String) as! Int)
+                        let teamData = Team(teamNumber: Int(teamNumber)!, dungeon: dungeonData)
+                        character.teams.append(teamData)
+                        print(character.teams[0].teamNumber)
+                    }
                 }
                 break
                 
@@ -117,6 +121,7 @@ class TacticTableViewController: UITableViewController {
                 break
                 
             }
+            self.tableView.reloadData()
         }
         
     }
@@ -132,8 +137,24 @@ class TacticTableViewController: UITableViewController {
         if segue.identifier == "DetailSegue" {
             if let destination = segue.destination as? DetailTableViewController {
                 if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
-                    destination.character = sampleData.characters[selectedIndex] as Character
-                    destination.DungeonName = "sample name"
+                    //여기는 이제 택틱받아오는 곳이라 데이터 집어넣고 수정해야함
+                    Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text ?? nil], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+                        switch(response.result) {
+                        case .success(_):
+                            if response.result.value != nil{
+                                print(response.result.value)
+                            }
+                            break
+                            
+                        case .failure(_):
+                            print(response.result.error)
+                            break
+                            
+                        }
+                    }
+
+                    destination.dungeonData = character.teams[selectedIndex].dungeon
+                    destination.dungeonName = character.teams[selectedIndex].dungeon.dungeonName
                 }
             }
         }
