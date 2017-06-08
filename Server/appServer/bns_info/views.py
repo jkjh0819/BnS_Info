@@ -37,7 +37,7 @@ def getRoleNum(request):
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
-		tactics = Tactics.objects.get(teamNum=receivedData['teamNum'], cName=receivedData['cName'], dType=receivedData['dType'])
+		tactics = Tactics.objects.get(teamNum=receivedData['teamNum'], cName=receivedData['characterName'], dType=receivedData['dType'])
 		role = {tactics.namedNum : tactics.role}
 
 		return JsonResponse(role, safe=False)
