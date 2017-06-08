@@ -224,6 +224,9 @@
                                 <state key="normal" image="complete">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="SBj-eH-afc" kind="unwind" unwindAction="unwindToMemberSelectViewWithSegue:" id="Dx7-6i-7Kv"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QyZ-lk-2kZ">
                                 <rect key="frame" x="132" y="41" width="178" height="30"/>

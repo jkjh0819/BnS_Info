@@ -13,11 +13,8 @@ class MemberSettingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var role: UILabel!
 
-    let items = ["first", "second", "third"]
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        role.text = "sample role"
         
     }
 
