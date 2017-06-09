@@ -48,7 +48,6 @@ class TacticTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tacticCell", for: indexPath)
-        print("table view set")
         cell.textLabel?.text = character.teams[indexPath.row].dungeon.dungeonName
         
         return cell
@@ -94,7 +93,7 @@ class TacticTableViewController: UITableViewController {
     // MARK: - Navigation
     // 로그인 화면의 unwind 목적지가 될 곳
     @IBAction func unwindToTacticTable(segue:UIStoryboardSegue) {
-        print("unwind")
+        
         if let sourceViewController = segue.source as? LoginViewController {
             self.characterName.text = sourceViewController.characterName.text
         }

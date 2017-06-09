@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A190FD11EE941D800D18427 /* MemberSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A190FD01EE941D800D18427 /* MemberSettingTableViewCell.swift */; };
 		1A1C8A791EE8E81300B02E60 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1C8A781EE8E81300B02E60 /* Data.swift */; };
 		1A2E04991EC2E0ED006DAB4E /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E04981EC2E0ED006DAB4E /* SampleData.swift */; };
 		1A2E04A11EC2EEFC006DAB4E /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E04A01EC2EEFC006DAB4E /* DetailTableViewController.swift */; };
@@ -109,6 +110,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A190FD01EE941D800D18427 /* MemberSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberSettingTableViewCell.swift; sourceTree = "<group>"; };
 		1A1C8A781EE8E81300B02E60 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		1A2E04981EC2E0ED006DAB4E /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		1A2E04A01EC2EEFC006DAB4E /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				1A4E404F1EBB218D00D47A93 /* AppDelegate.swift */,
 				1A4E40511EBB218D00D47A93 /* ViewController.swift */,
 				1A4E40531EBB218D00D47A93 /* Main.storyboard */,
+				1A190FD01EE941D800D18427 /* MemberSettingTableViewCell.swift */,
 				1A5315D81EE00DE800F2CC28 /* MemberSelectViewController.swift */,
 				4716C5581EDFF4FA00FE5476 /* LoginView.storyboard */,
 				1AB90AD61ECEDB3100B7AE04 /* LoginViewController.swift */,
@@ -335,6 +338,7 @@
 			files = (
 				1A5315D91EE00DE800F2CC28 /* MemberSelectViewController.swift in Sources */,
 				1AB90AD71ECEDB3100B7AE04 /* LoginViewController.swift in Sources */,
+				1A190FD11EE941D800D18427 /* MemberSettingTableViewCell.swift in Sources */,
 				47D42B151EBF6228001EF054 /* TacticTableViewController.swift in Sources */,
 				1A2E04A11EC2EEFC006DAB4E /* DetailTableViewController.swift in Sources */,
 				47B62C151EC59F4200D7405D /* ConquestTableViewController.swift in Sources */,

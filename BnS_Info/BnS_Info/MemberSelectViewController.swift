@@ -11,6 +11,8 @@ import UIKit
 class MemberSelectViewController: UIViewController {
 
     var dunjeonType:String!
+    //character name이랑 role이랑 같이 받도록 수정해야 함
+    var roles:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,9 @@ class MemberSelectViewController: UIViewController {
     */
 
     @IBAction func unwindToMemberSelectView(segue:UIStoryboardSegue) {
-        print("here unwind")// TODO
+        if let sourceViewController = segue.source as? MemberSettingDetailViewController {
+            self.roles = sourceViewController.roles
+            print(self.roles)
+        }
     }
 }
