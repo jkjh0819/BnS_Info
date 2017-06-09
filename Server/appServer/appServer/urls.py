@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'^requestRole/', views.getRoleNum),
     url(r'^newTeam/', views.setTeam),
     url(r'^addMember/', views.setTeamMember),
+    url(r'^removeMember/', views.removeTeamMemer),
+    url(r'^modifyRole/', views.modifyRole),
 ]
