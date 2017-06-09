@@ -61,10 +61,9 @@ def setTeam(request):
 		hashKey = Leader + DungeonType + time.time()
 		teamNumber.update(hashKey)
 
-		newTeam = Team(teamLeader=Leader,
+		newTeam = Team.objects.create(teamLeader=Leader,
 			teamNum=teamNumber,
 			dType=DungeonType)
-		newTeam.save()
 
 		return HttpResponse(True)
 
@@ -82,12 +81,11 @@ def setTeamMember(request):
 		cRole = receivedData['role']
 		DungeonType = receivedData['dType']
 
-		newRole = Tactics(cName=characterName,
+		newRole = Tactics.objects.create(cName=characterName,
 			teamNum=teamNumber,
 			role=cRole,
 			dType=DungeonType,
 			namedNum=None)
-		newRole.save()
 
 		return HttpResponse(True)
 
