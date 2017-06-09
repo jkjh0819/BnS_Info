@@ -25,7 +25,7 @@ class MemberSelectViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 
@@ -36,10 +36,15 @@ class MemberSelectViewController: UIViewController {
     }
     */
 
+    //팀원 추가하고 테이블 셀 리로드
     @IBAction func unwindToMemberSelectView(segue:UIStoryboardSegue) {
         if let sourceViewController = segue.source as? MemberSettingDetailViewController {
             self.roles = sourceViewController.roles
             print(self.roles)
         }
+    }
+    
+    @IBAction func unwindToMemberSelectViewCancel(segue:UIStoryboardSegue) {
+        //role 생성 취소
     }
 }

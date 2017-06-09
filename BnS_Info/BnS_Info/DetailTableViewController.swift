@@ -10,8 +10,12 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
 
+    //팀장인 경우에는 데이터 셋을 받아와서 수정 삭제가 가능
+    //팀원인 경우에는 받아온 데이터 셋이 그냥 자기 역할임
     var dungeonData:Dungeon?
     var dungeonName:String!
+    
+    //던전 이름 별로 섹션 갯수 나누고 역할 띄우기
     
        override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +63,28 @@ class DetailTableViewController: UITableViewController {
     }
     
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let change = UITableViewRowAction(style: .normal, title: "change") { action, index in
+            //self.isEditing = false
+            let cell = tableView.cellForRow(at: indexPath)
+            print("before move segue")
+            self.performSegue(withIdentifier: "change", sender: cell)
+            print("change button tapped")
+        }
+        change.backgroundColor = UIColor.orange
+        
+        let delete = UITableViewRowAction(style: .normal, title: "delete") { action, index in
+            //self.isEditing = false
+            //여기서 그냥 데이터 딜리트 해버리면 됨.
+            print("favorite button tapped")
+        }
+        delete.backgroundColor = UIColor.red
+        
+        return [delete, change]
+    }
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -94,14 +120,28 @@ class DetailTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+    
+        print("prepare move segue")
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "change" {
+            
+        }
     }
-    */
-
+    
+    @IBAction func unwindToDetailTableView(segue:UIStoryboardSegue) {
+        if let sourceViewController = segue.source as? MemberSettingDetailViewController {
+        }
+    }
+    
+    @IBAction func unwindToDetailTableViewCancel(segue:UIStoryboardSegue) {
+        if let sourceViewController = segue.source as? MemberSettingDetailViewController {
+        }
+    }
+    
 }

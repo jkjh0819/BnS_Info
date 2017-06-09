@@ -15,8 +15,6 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
     var roles:[String] = ["first","second", "third"]
     
     func changeValue1(sender: UISegmentedControl) {
-        print("changeValue1")
-        print(sender.selectedSegmentIndex)
         switch sender.selectedSegmentIndex {
         case 0:
             roles[0] = "first role changed"

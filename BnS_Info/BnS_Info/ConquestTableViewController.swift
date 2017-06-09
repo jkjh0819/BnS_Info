@@ -16,6 +16,8 @@ class ConquestTableViewController: UITableViewController {
 //    타이틀은 OOO 공략
 //    서브타이틀은 해도 되고 안 해도 되는데 간단한 스크립션을 넣을 수 있도록.
 
+    
+    //셀 클릭하면 바깥으로 링크 연결? 아니면 뷰에다가 설명 쓰기
     override func viewDidLoad() {
         super.viewDidLoad()
 

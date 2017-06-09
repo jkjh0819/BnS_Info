@@ -62,6 +62,7 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        //다음 뷰로 던전 이름 넘기기
         if segue.identifier == "MemberSelect" {
             if let destination = segue.destination as?
                 MemberSelectViewController {
