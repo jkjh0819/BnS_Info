@@ -13,27 +13,30 @@ def index(request):
 
 #로그인 해서 소속 정보 전달.
 def login(request): 
-    if request.method == 'POST': 
-        data = request.body.decode("utf-8")
-        receivedData = json.loads(data)
+    if request.method != 'POST': 
+        return HttpResponse(False)
 
-        receivedName = receivedData['characterName'] 
-        retValue = {}
+    else:
+    	data = request.body.decode("utf-8")
+    	receivedData = json.loads(data)
 
-        character = Character.objects.filter(name=receivedName)
-        for i in range(0, character.count()):
-        	team = Team.objects.get(teamNum=character[i].teamNum)
-        	teamDungeonType = Dungeon.objects.get(dType=team.dType)
-        	retValue[character[i].teamNum] = teamDungeonType.dType
+    	receivedName = receivedData['characterName']
+    	retValue = {}
 
-        return JsonResponse(retValue, safe=False)
+    	character = Character.objects.filter(name=receivedName)
+    	for i in range(0, character.count()):
+    		team = Team.objects.get(teamNum=character[i].teamNum)
+    		teamDungeonType = Dungeon.objects.get(dType=team.dType)
+    		retValue[character[i].teamNum] = [teamDungeonType.dType, team.teamLeader]
 
-    else: 
-        return HttpResponse('Request is not POST method.')
+    	return JsonResponse(retValue, safe=False)
 
 #팀 선택하면 역할 전달.
 def getRoleNum(request):
-	if request.method == 'POST':
+	if request.method != 'POST':
+		return HttpResponse(False)
+
+	else:
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
@@ -42,12 +45,12 @@ def getRoleNum(request):
 
 		return JsonResponse(role, safe=False)
 
-	else:
-		return HttpResponse('Request is not POST method.')
-
 #팀 생성
 def setTeam(request):
-	if request.method == 'POST':
+	if request.method != 'POST':
+		return HttpResponse(False)
+
+	else:
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
@@ -63,14 +66,14 @@ def setTeam(request):
 			dType=DungeonType)
 		newTeam.save()
 
-		return HttpResponse('done')
-
-	else:
-		return HttpResponse('error')
+		return HttpResponse(True)
 
 #팀 멤버 추가
 def setTeamMember(request):
-	if request.method == 'POST':
+	if request.method != 'POST':
+		return HttpResponse(False)
+
+	else:
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
@@ -86,11 +89,42 @@ def setTeamMember(request):
 			namedNum=None)
 		newRole.save()
 
-		return HttpResponse('done')
+		return HttpResponse(True)
 
+#팀 멤버 삭제
+def removeTeamMemer(request):
+	if request.method != 'POST':
+		return HttpResponse(False)
 
 	else:
-		return HttpResponse('error')
+		data = request.body.decode("utf-8")
+		receivedData = json.loads(data)
+
+		characterName = receivedData['characterName']
+		teamNumber = receivedData['teamNumber']
+
+		Character.objects.filter(teamNum=teamNumber).delete()
+
+		return HttpResponse(True)
+
+#멤버 역할 수정
+def modifyRole(request):
+	if request.method != 'POST':
+		return HttpResponse(False)
+
+	else:
+		data = request.body.decode("utf-8")
+		receivedData = json.loads(data)
+
+		teamNumber = receivedData['teamNum']
+		characterName = receivedData['characterName']
+		DungeonType = receivedData['dType']
+		newRole = receivedData['role']
+		namedNumber = receivedData['namedNumber']
+
+		Tactics.objects.filter(teamNum=teamNumber, cName=characterName, namedNum=namedNumber, dType=DungeonType).update(role=newRole)
+
+		return HttpResponse(True)
 
 
 
