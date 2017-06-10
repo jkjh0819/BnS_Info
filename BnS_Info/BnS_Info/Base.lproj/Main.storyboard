@@ -196,6 +196,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="팀 생성" id="pAi-aR-X5n"/>
+                    <connections>
+                        <outlet property="dungeonName" destination="ASN-h2-uhx" id="mIG-wR-GwY"/>
+                        <outlet property="tableView" destination="ha8-fr-Osx" id="rR0-8c-oYe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxV-hm-lqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="LY9-Bq-Cbv" userLabel="Exit" sceneMemberID="exit"/>

@@ -11,10 +11,11 @@ import UIKit
 class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var leaderName:String!
-    var dunjeonType:String!
+    var dungeonType:Int!
     
     @IBOutlet weak var leader: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
+    
     //11, 21, 22, 23 - "밤의 바람평야","검은 마천루","서자의 안식처", "소용돌이 사원"
     var pickerData = ["밤의 바람평야","검은 마천루","서자의 안식처", "소용돌이 사원"]
     
@@ -52,7 +53,7 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.dunjeonType = pickerData[row]
+        self.dungeonType = getDungeonType(Name: pickerData[row])
     }
     
     
@@ -64,9 +65,11 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Pass the selected object to the new view controller.
         //다음 뷰로 던전 이름 넘기기
         if segue.identifier == "MemberSelect" {
+            //set Team호출하고 teamNumber 받아서 함께 넘겨줘야함
             if let destination = segue.destination as?
                 MemberSelectViewController {
-                destination.dunjeonType = self.dunjeonType
+                destination.dungeonType = self.dungeonType
+                destination.teamLeader = self.leader.text
             }
         }
     }

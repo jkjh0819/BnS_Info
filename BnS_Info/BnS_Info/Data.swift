@@ -8,7 +8,37 @@
 
 import Foundation
 
-var character = Character(name:"이름을 입력해주세요")
+var character:Character = Character(name:"이름을 입력해주세요")
+
+func getDungeonName(type:Int) -> String {
+    switch type {
+    case 11:
+        return "밤의 바람평야"
+    case 21:
+        return "검은 마천루"
+    case 22:
+        return "서자의 안식처"
+    case 23:
+        return "소용돌이 사원"
+    default:
+        return "Dunjeon Code Error"
+    }
+}
+
+func getDungeonType(Name:String) -> Int {
+    switch Name {
+        case "밤의 바람평야":
+            return 11
+        case "검은 마천루":
+            return 21
+        case "서자의 안식처":
+            return 22
+        case "소용돌이 사원":
+            return 23
+        default:
+            return -1
+    }
+}
 
 class Character {
     let name:String
@@ -23,10 +53,12 @@ class Character {
 class Team {
     let teamNumber:Int
     let dungeon:Dungeon
+    let teamLeader:String
     
-    init(teamNumber:Int, dungeon:Dungeon){
+    init(teamNumber:Int, dungeon:Dungeon, teamLeader:String){
         self.teamNumber = teamNumber
         self.dungeon = dungeon
+        self.teamLeader = teamLeader
     }
 }
 
@@ -38,18 +70,7 @@ class Dungeon {
     
     init(dungeonType:Int){
         self.dungeonType = dungeonType
-        switch dungeonType {
-        case 11:
-            self.dungeonName = "밤의 바람평야"
-        case 21:
-            self.dungeonName = "검은 마천루"
-        case 22:
-            self.dungeonName = "서자의 안식처"
-        case 23:
-            self.dungeonName = "소용돌이 사원"
-        default:
-            self.dungeonName = "Dunjeon Code Error"
-        }
+        self.dungeonName = getDungeonName(type: dungeonType)
     }
 }
 

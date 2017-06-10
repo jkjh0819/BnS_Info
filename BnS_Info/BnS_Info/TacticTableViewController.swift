@@ -98,20 +98,12 @@ class TacticTableViewController: UITableViewController {
             self.characterName.text = sourceViewController.characterName.text
         }
         
-        Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text ?? nil], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        //setTeam확인하는 부분
+        Alamofire.request("http://127.0.0.1:8000/newTeam/", method: .post, parameters: ["teamLeader": self.characterName.text, "dType": 11], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
-                    //teamNumber:dungeonType
-                    let result = response.result.value as! NSDictionary
-                    let keys = result.allKeys
-                    for key in keys {
-                        let teamNumber = key as! String
-                        let dungeonData = Dungeon(dungeonType: result.value(forKey: key as! String) as! Int)
-                        let teamData = Team(teamNumber: Int(teamNumber)!, dungeon: dungeonData)
-                        character.teams.append(teamData)
-                        print(character.teams[0].teamNumber)
-                    }
+                    print(response.result.value)
                 }
                 break
                 
@@ -122,6 +114,32 @@ class TacticTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         }
+        
+        /*
+        Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(_):
+                if response.result.value != nil{
+                    //teamNumber:dungeonType
+                    let result = response.result.value as! NSDictionary
+                    let keys = result.allKeys
+                    for key in keys {
+                        let teamNumber = key as! String
+                        let values = result.value(forKey: teamNumber) as! NSArray
+                        let dungeonData = Dungeon(dungeonType: values[0] as! Int)
+                        let teamData = Team(teamNumber: Int(teamNumber)!, dungeon: dungeonData, teamLeader: values[1] as! String)
+                        character.teams.append(teamData)
+                    }
+                }
+                break
+                
+            case .failure(_):
+                print(response.result.error)
+                break
+                
+            }
+            self.tableView.reloadData()
+        }*/
         
     }
     
@@ -159,7 +177,7 @@ class TacticTableViewController: UITableViewController {
         }
         
         if segue.identifier == "TeamCreate" {
-            if let destination = segue.destination as?TeamCreateController {
+            if let destination = segue.destination as? TeamCreateController {
                 if let leaderName = self.characterName?.text {
                     destination.leaderName = leaderName
                 }
