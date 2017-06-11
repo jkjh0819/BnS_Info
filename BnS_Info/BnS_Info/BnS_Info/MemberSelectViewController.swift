@@ -22,6 +22,10 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dungeonName: UILabel!
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 3
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         let getName = getDungeonName(type: dType)
         dungeonName.text = getName
