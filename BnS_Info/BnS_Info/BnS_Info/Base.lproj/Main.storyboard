@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="leader" translatesAutoresizingMaskIntoConstraints="NO" id="ITa-9j-do9">
-                                <rect key="frame" x="16" y="138" width="96" height="40"/>
+                                <rect key="frame" x="14" y="138" width="101" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7F-4P-mn3">
@@ -627,7 +627,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CHH-Ix-evg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="s6k-wD-3y2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="s6k-wD-3y2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
