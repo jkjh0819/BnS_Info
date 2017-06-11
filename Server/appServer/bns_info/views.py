@@ -57,9 +57,8 @@ def setTeam(request):
 		Leader = receivedData['teamLeader']
 		DungeonType = receivedData['dType']
 
-		teamNumber = hashlib.md5()
-		hashKey = Leader + DungeonType + time.time()
-		teamNumber.update(hashKey)
+		hashKey = str(Leader) + str(DungeonType) + str(time.time())
+		teamNumber = hashlib.md5(hashKey.encode("utf-8")).hexdigest()
 
 		newTeam = Team.objects.create(teamLeader=Leader,
 			teamNum=teamNumber,
