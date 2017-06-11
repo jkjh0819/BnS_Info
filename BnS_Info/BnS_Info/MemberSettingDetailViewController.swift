@@ -12,6 +12,7 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
 
     @IBOutlet weak var tableView: UITableView!
 
+    var dType:Int = -1
     var roles:[String] = ["first","second", "third"]
     
     func changeValue1(sender: UISegmentedControl) {
@@ -43,7 +44,11 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return namedData[getDungeonIndex(type: dType)].count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return namedData[getDungeonIndex(type: dType)][section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

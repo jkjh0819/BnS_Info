@@ -11,7 +11,7 @@ import UIKit
 class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var leaderName:String!
-    var dungeonType:Int!
+    var dType:Int!
     
     @IBOutlet weak var leader: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
@@ -53,7 +53,7 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.dungeonType = getDungeonType(Name: pickerData[row])
+        self.dType = getDungeonType(Name: pickerData[row])
     }
     
     
@@ -68,7 +68,7 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
             //set Team호출하고 teamNumber 받아서 함께 넘겨줘야함
             if let destination = segue.destination as?
                 MemberSelectViewController {
-                destination.dungeonType = self.dungeonType
+                destination.dType = self.dType
                 destination.teamLeader = self.leader.text
             }
         }

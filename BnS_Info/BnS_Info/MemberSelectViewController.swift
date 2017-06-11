@@ -10,7 +10,7 @@ import UIKit
 
 class MemberSelectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var dungeonType:Int!
+    var dType:Int!
     //character name이랑 role이랑 같이 받도록 수정해야 함
     var roles:[String] = []
     var teamLeader:String!
@@ -20,7 +20,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var dungeonName: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
-        let getName = getDungeonName(type: dungeonType)
+        let getName = getDungeonName(type: dType)
         dungeonName.text = getName
     }
     

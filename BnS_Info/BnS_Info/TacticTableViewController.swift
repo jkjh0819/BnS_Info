@@ -96,8 +96,12 @@ class TacticTableViewController: UITableViewController {
         
         if let sourceViewController = segue.source as? LoginViewController {
             self.characterName.text = sourceViewController.characterName.text
+            if let newName = self.characterName.text {
+                character = Character(name: newName)
+            }
         }
         
+        /*
         //setTeam확인하는 부분
         Alamofire.request("http://127.0.0.1:8000/newTeam/", method: .post, parameters: ["teamLeader": self.characterName.text, "dType": 11], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
@@ -114,8 +118,8 @@ class TacticTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         }
+        */
         
-        /*
         Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
@@ -139,7 +143,7 @@ class TacticTableViewController: UITableViewController {
                 
             }
             self.tableView.reloadData()
-        }*/
+        }
         
     }
     
@@ -154,10 +158,10 @@ class TacticTableViewController: UITableViewController {
         if segue.identifier == "DetailSegue" {
             if let destination = segue.destination as? DetailTableViewController {
                 if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
-                    //여기는 이제 택틱받아오는 곳이라 데이터 집어넣고 수정해야함
-                    Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text ?? nil], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+                    Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.characterName.text, "teamNum": character.teams[selectedIndex].teamNumber, "dType": character.teams[selectedIndex].dungeon.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
                         switch(response.result) {
                         case .success(_):
+                            //namedNum: tactic 받아오므로 파싱해서 데이터에집어넣어주어야 함.
                             if response.result.value != nil{
                                 print(response.result.value)
                             }
