@@ -14,12 +14,22 @@ class DetailTableViewController: UITableViewController {
     //팀원인 경우에는 받아온 데이터 셋이 그냥 자기 역할임
     var dungeonData:Dungeon?
     var dungeonName:String!
+    var teamLeader:String!
+    
+    //sampleData
+    let cName:String = "리엘 베르디"
+    let tempNames:[String] = ["리엘 베르디", "쵸쿄파이", "늘빈님", "천상극법", "천상원이", "쿠코상", "천화도", "쬬퍄", "암살자꼼이", "힘쎈슈야"]
+    let tempRole = [["1파티", "탱커", "6시"], ["1파티","탱커","내부"], ["1파티","탱커","모장군"], ["1파티","탱커","12시"]]
+    let dType = 21
+    
     
     //던전 이름 별로 섹션 갯수 나누고 역할 띄우기
     
        override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = dungeonName
+        //self.title = dungeonName
+        self.title = "검은 마천루"
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,18 +45,28 @@ class DetailTableViewController: UITableViewController {
     // TODO : arccodian animation 구현
     
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        if teamLeader == cName {
+            return 1
+        }
+        return 4
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if teamLeader == cName {
+            return "팀원"
+        }
+        return namedData[getDungeonIndex(type: dType)][section]
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        guard let rowCount = sampleData.characters[0].tactic?.count else {
-            return 0
+        if teamLeader == cName {
+            return tempNames.count
         }
-        return rowCount
+        return 3
     }
 
     
@@ -59,12 +79,32 @@ class DetailTableViewController: UITableViewController {
                 cell.textLabel?.text = String(partyText) + "파티, " + roleText
             }
         }*/
+        
+        if teamLeader == cName {
+            cell.textLabel?.text = tempNames[indexPath.row]
+        } else {
+            switch indexPath.row {
+            case 0:
+                cell.textLabel?.text = "파티"
+                break
+            case 1:
+                cell.textLabel?.text = "역할"
+                break
+            case 2:
+                cell.textLabel?.text = "위치"
+                break
+            default:
+                break
+            }
+            cell.detailTextLabel?.text = tempRole[indexPath.section][indexPath.row]
+        }
+        
         return cell
     }
     
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
+        if teamLeader == cName {
         let change = UITableViewRowAction(style: .normal, title: "change") { action, index in
             //self.isEditing = false
             let cell = tableView.cellForRow(at: indexPath)
@@ -81,7 +121,9 @@ class DetailTableViewController: UITableViewController {
         }
         delete.backgroundColor = UIColor.red
         
-        return [delete, change]
+            return [delete, change]
+        }
+        return nil
     }
     
     

@@ -12,6 +12,13 @@ var character:Character = Character(name:"이름을 입력해주세요")
 
 let namedData = [["1성 구무악", "2성 구무악", "3성 구무악", "4성 구무악", "5성 구무악", "6성 구무악"], ["천독룡", "사안장군", "모순장군", "촉마왕"], ["적패왕"], ["초열검, 혹한검", "초마령", "흑풍마녀"]]
 
+let macheonrooTactic = [macheonrooRole, macheonrooPosition]
+
+
+let macheonrooRole = [["탱커","딜러","독배달"],["탱커", "딜러", "내부"], ["탱커","딜러", "리딩", "띄우기"],["탱커", "딜러","발묶", "80격리", "30격리"]]
+
+let macheonrooPosition = [["12","3","6","9"], ["12","5","7"], ["모장군","순장군"], ["12", "5","7"]]
+
 func getDungeonName(type:Int) -> String {
     switch type {
     case 11:
@@ -57,6 +64,15 @@ func getDungeonIndex(type:Int) -> Int {
     }
 }
 
+func getDungenRole(type:Int, section:Int, index:Int) -> [String] {
+    switch type {
+    case 21:
+        return macheonrooTactic[index][section]
+    default:
+        return []
+    }
+}
+
 class Character {
     let name:String
     var teams:[Team] = []
@@ -68,11 +84,11 @@ class Character {
 }
 
 class Team {
-    let teamNumber:Int
+    let teamNumber:String
     let dungeon:Dungeon
     let teamLeader:String
     
-    init(teamNumber:Int, dungeon:Dungeon, teamLeader:String){
+    init(teamNumber:String, dungeon:Dungeon, teamLeader:String){
         self.teamNumber = teamNumber
         self.dungeon = dungeon
         self.teamLeader = teamLeader

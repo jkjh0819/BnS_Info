@@ -48,44 +48,24 @@ class ConquestTableViewController: UITableViewController {
     // Pop up browser with under urls if user tabs the cell.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let url : NSURL?
-        
-        switch indexPath.section{
-        case 0:
-            switch indexPath.row{
-            case 0:
-                url = NSURL(string: "http://section0.row0.com")
-            case 1:
-                url = NSURL(string: "http://section0.row1.com")
-            default:
-                return;
+        if indexPath.section == 0 && indexPath.row == 0 {
+             url = NSURL(string: "http://bns.plaync.com/board/job/warlock/article/5895798")
+            if url != nil{
+                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+                //UIApplication.shared.openURL(url! as URL)
             }
-            
-        case 1:
-            switch indexPath.row{
-            case 0:
-                url = NSURL(string: "http://section1.row0.com")
-            case 1:
-                url = NSURL(string: "http://section1.row1.com")
-            default:
-                return;
-            }
-        default:
-            return;
         }
-        
-        if url != nil{
-            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
-            //UIApplication.shared.openURL(url! as URL)
-        }
-
     }
 
     // reuseidentifier 꼭 체크해서 수정!!!!!
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "temp", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "conquest", for: indexPath) as! ConquestTableViewCell
+        cell.title.text = "천독룡"
+        cell.subTitle.text = "전체 공략"
+        cell.imageView?.image = UIImage(named: "conquest1")
         // Configure the cell...
-        cell.textLabel?.text = "test"
+
+    
 
         return cell
     }

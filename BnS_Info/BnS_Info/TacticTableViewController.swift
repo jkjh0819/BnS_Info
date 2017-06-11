@@ -11,7 +11,9 @@ import Alamofire
 
 class TacticTableViewController: UITableViewController {
 
-   
+    let sampleTeam = ["검은 마천루", "소용돌이사원", "밤의 바람평야", "서자의 안식처"]
+    
+    
     @IBOutlet weak var characterName: UILabel!
     
     @IBAction func CheckTeam(_ sender: Any) {
@@ -42,14 +44,15 @@ class TacticTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         // 캐릭터당 팀 갯수 만큼 row만들도록 수정해야 함.
-        return character.teams.count
+        //return character.teams.count
+        return 4
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tacticCell", for: indexPath)
-        cell.textLabel?.text = character.teams[indexPath.row].dungeon.dungeonName
-        
+        //cell.textLabel?.text = character.teams[indexPath.row].dungeon.dungeonName
+        cell.textLabel?.text = sampleTeam[indexPath.row]
         return cell
     }
     
@@ -101,25 +104,6 @@ class TacticTableViewController: UITableViewController {
             }
         }
         
-        /*
-        //setTeam확인하는 부분
-        Alamofire.request("http://127.0.0.1:8000/newTeam/", method: .post, parameters: ["teamLeader": self.characterName.text, "dType": 11], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-            switch(response.result) {
-            case .success(_):
-                if response.result.value != nil{
-                    print(response.result.value)
-                }
-                break
-                
-            case .failure(_):
-                print(response.result.error)
-                break
-                
-            }
-            self.tableView.reloadData()
-        }
-        */
-        
         Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
@@ -131,7 +115,7 @@ class TacticTableViewController: UITableViewController {
                         let teamNumber = key as! String
                         let values = result.value(forKey: teamNumber) as! NSArray
                         let dungeonData = Dungeon(dungeonType: values[0] as! Int)
-                        let teamData = Team(teamNumber: Int(teamNumber)!, dungeon: dungeonData, teamLeader: values[1] as! String)
+                        let teamData = Team(teamNumber: String(teamNumber)!, dungeon: dungeonData, teamLeader: values[1] as! String)
                         character.teams.append(teamData)
                     }
                 }
@@ -158,7 +142,7 @@ class TacticTableViewController: UITableViewController {
         if segue.identifier == "DetailSegue" {
             if let destination = segue.destination as? DetailTableViewController {
                 if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
-                    Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.characterName.text, "teamNum": character.teams[selectedIndex].teamNumber, "dType": character.teams[selectedIndex].dungeon.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+                   /* Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.characterName.text, "teamNum": character.teams[selectedIndex].teamNumber, "dType": character.teams[selectedIndex].dungeon.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
                         switch(response.result) {
                         case .success(_):
                             //namedNum: tactic 받아오므로 파싱해서 데이터에집어넣어주어야 함.
@@ -172,10 +156,12 @@ class TacticTableViewController: UITableViewController {
                             break
                             
                         }
-                    }
-
-                    destination.dungeonData = character.teams[selectedIndex].dungeon
-                    destination.dungeonName = character.teams[selectedIndex].dungeon.dungeonName
+                    }*/
+                    
+                    destination.teamLeader = self.characterName.text
+                    
+                    /*destination.dungeonData = character.teams[selectedIndex].dungeon
+                    destination.dungeonName = character.teams[selectedIndex].dungeon.dungeonName*/
                 }
             }
         }
