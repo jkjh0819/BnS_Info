@@ -104,7 +104,7 @@ class TacticTableViewController: UITableViewController {
             }
         }
         
-        Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        /*Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
@@ -127,14 +127,14 @@ class TacticTableViewController: UITableViewController {
                 
             }
             self.tableView.reloadData()
-        }
+        }*/
         
     }
     
     @IBAction func unwindToTacticTable2(segue:UIStoryboardSegue) {
         // 팀 생성 후 돌아오는 액션
     }
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.

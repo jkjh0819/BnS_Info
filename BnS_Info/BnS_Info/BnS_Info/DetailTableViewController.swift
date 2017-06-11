@@ -18,7 +18,7 @@ class DetailTableViewController: UITableViewController {
     
     //sampleData
     let cName:String = "리엘 베르디"
-    let tempNames:[String] = ["리엘 베르디", "쵸쿄파이", "늘빈님", "천상극법", "천상원이", "쿠코상", "천화도", "쬬퍄", "암살자꼼이", "힘쎈슈야"]
+    var tempNames:[String] = ["리엘 베르디", "쵸쿄파이", "늘빈님", "천상극법", "천상원이", "쿠코상", "천화도", "쬬퍄", "암살자꼼이", "힘쎈슈야"]
     let tempRole = [["1파티", "탱커", "6시"], ["1파티","탱커","내부"], ["1파티","탱커","모장군"], ["1파티","탱커","12시"]]
     let dType = 21
     
@@ -82,6 +82,7 @@ class DetailTableViewController: UITableViewController {
         
         if teamLeader == cName {
             cell.textLabel?.text = tempNames[indexPath.row]
+            cell.detailTextLabel?.text = ""
         } else {
             switch indexPath.row {
             case 0:
@@ -101,14 +102,12 @@ class DetailTableViewController: UITableViewController {
         
         return cell
     }
-    
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if teamLeader == cName {
         let change = UITableViewRowAction(style: .normal, title: "change") { action, index in
             //self.isEditing = false
             let cell = tableView.cellForRow(at: indexPath)
-            print("before move segue")
             self.performSegue(withIdentifier: "change", sender: cell)
             print("change button tapped")
         }
@@ -117,16 +116,24 @@ class DetailTableViewController: UITableViewController {
         let delete = UITableViewRowAction(style: .normal, title: "delete") { action, index in
             //self.isEditing = false
             //여기서 그냥 데이터 딜리트 해버리면 됨.
-            print("favorite button tapped")
+            self.tempNames.remove(at: indexPath.row)
+            self.tableView.reloadData()
+            print("delete button tapped")
         }
-        delete.backgroundColor = UIColor.red
-        
+            delete.backgroundColor = UIColor.red
+            print(delete)
             return [delete, change]
         }
         return nil
     }
     
-    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if teamLeader == cName {
+            return true;
+        }
+        return false;
+    }
+        
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

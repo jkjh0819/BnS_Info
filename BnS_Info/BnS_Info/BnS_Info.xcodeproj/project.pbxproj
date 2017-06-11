@@ -19,7 +19,6 @@
 		1A594C671EED25F10013985C /* ConquestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A594C661EED25F10013985C /* ConquestTableViewCell.swift */; };
 		1A7305361EE15A5400444D96 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7305271EE15A2500444D96 /* Alamofire.framework */; };
 		1A7305371EE15A5400444D96 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7305271EE15A2500444D96 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1AB90ABA1ECED82100B7AE04 /* ServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB90AB91ECED82100B7AE04 /* ServerAPI.swift */; };
 		1AB90AD71ECEDB3100B7AE04 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB90AD61ECEDB3100B7AE04 /* LoginViewController.swift */; };
 		4716C55A1EDFF4FA00FE5476 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4716C5581EDFF4FA00FE5476 /* LoginView.storyboard */; };
 		4733C1C71EE14DB40089460D /* MemberSettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4733C1C61EE14DB40089460D /* MemberSettingDetailViewController.swift */; };
@@ -124,7 +123,6 @@
 		1A5315D81EE00DE800F2CC28 /* MemberSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberSelectViewController.swift; sourceTree = "<group>"; };
 		1A594C661EED25F10013985C /* ConquestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConquestTableViewCell.swift; sourceTree = "<group>"; };
 		1A73051B1EE15A2500444D96 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
-		1AB90AB91ECED82100B7AE04 /* ServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAPI.swift; sourceTree = "<group>"; };
 		1AB90AD61ECEDB3100B7AE04 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4716C5591EDFF4FA00FE5476 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginView.storyboard; sourceTree = "<group>"; };
 		4733C1C61EE14DB40089460D /* MemberSettingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberSettingDetailViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				1A5315D81EE00DE800F2CC28 /* MemberSelectViewController.swift */,
 				4716C5581EDFF4FA00FE5476 /* LoginView.storyboard */,
 				1AB90AD61ECEDB3100B7AE04 /* LoginViewController.swift */,
-				1AB90AB91ECED82100B7AE04 /* ServerAPI.swift */,
 				47B62C121EC45FC200D7405D /* TeamCreateController.swift */,
 				1A1C8A781EE8E81300B02E60 /* Data.swift */,
 				1A2E04981EC2E0ED006DAB4E /* SampleData.swift */,
@@ -346,7 +343,6 @@
 				1A594C671EED25F10013985C /* ConquestTableViewCell.swift in Sources */,
 				1A2E04A11EC2EEFC006DAB4E /* DetailTableViewController.swift in Sources */,
 				47B62C151EC59F4200D7405D /* ConquestTableViewController.swift in Sources */,
-				1AB90ABA1ECED82100B7AE04 /* ServerAPI.swift in Sources */,
 				1A4E40521EBB218D00D47A93 /* ViewController.swift in Sources */,
 				4733C1C71EE14DB40089460D /* MemberSettingDetailViewController.swift in Sources */,
 				1A1C8A791EE8E81300B02E60 /* Data.swift in Sources */,
