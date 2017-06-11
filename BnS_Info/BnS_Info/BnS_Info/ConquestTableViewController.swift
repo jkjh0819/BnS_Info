@@ -20,7 +20,7 @@ class ConquestTableViewController: UITableViewController {
     //셀 클릭하면 바깥으로 링크 연결? 아니면 뷰에다가 설명 쓰기
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "공략 보기"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -63,11 +63,13 @@ class ConquestTableViewController: UITableViewController {
         cell.title.text = "천독룡"
         cell.subTitle.text = "전체 공략"
         cell.imageView?.image = UIImage(named: "conquest1")
+       
         // Configure the cell...
-
-    
-
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
     
 
