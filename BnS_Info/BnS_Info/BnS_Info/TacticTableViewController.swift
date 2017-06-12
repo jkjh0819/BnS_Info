@@ -10,9 +10,6 @@ import UIKit
 import Alamofire
 
 class TacticTableViewController: UITableViewController {
-
-    let sampleTeam = ["검은 마천루", "소용돌이사원", "밤의 바람평야", "서자의 안식처"]
-    
     
     @IBOutlet weak var characterName: UILabel!
     
@@ -44,39 +41,16 @@ class TacticTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         // 캐릭터당 팀 갯수 만큼 row만들도록 수정해야 함.
-        //return character.teams.count
-        return 4
+        return character.teams.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tacticCell", for: indexPath)
-        //cell.textLabel?.text = character.teams[indexPath.row].dungeon.dungeonName
-        cell.textLabel?.text = sampleTeam[indexPath.row]
+        cell.textLabel?.text = character.teams[indexPath.row].dungeon.dungeonName
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -104,7 +78,7 @@ class TacticTableViewController: UITableViewController {
             }
         }
         
-        /*Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
@@ -127,7 +101,7 @@ class TacticTableViewController: UITableViewController {
                 
             }
             self.tableView.reloadData()
-        }*/
+        }
         
     }
     
@@ -142,7 +116,7 @@ class TacticTableViewController: UITableViewController {
         if segue.identifier == "DetailSegue" {
             if let destination = segue.destination as? DetailTableViewController {
                 if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
-                   /* Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.characterName.text, "teamNum": character.teams[selectedIndex].teamNumber, "dType": character.teams[selectedIndex].dungeon.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+                   Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.characterName.text, "teamNum": character.teams[selectedIndex].teamNumber, "dType": character.teams[selectedIndex].dungeon.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
                         switch(response.result) {
                         case .success(_):
                             //namedNum: tactic 받아오므로 파싱해서 데이터에집어넣어주어야 함.
@@ -156,22 +130,20 @@ class TacticTableViewController: UITableViewController {
                             break
                             
                         }
-                    }*/
+                    }
                     
-                    destination.teamLeader = self.characterName.text
-                    
-                    /*destination.dungeonData = character.teams[selectedIndex].dungeon
-                    destination.dungeonName = character.teams[selectedIndex].dungeon.dungeonName*/
+                    destination.teamLeader = characterName.text
+                    destination.dungeonData = character.teams[selectedIndex].dungeon
+                    destination.dungeonName = character.teams[selectedIndex].dungeon.dungeonName
                 }
             }
         }
         
         if segue.identifier == "TeamCreate" {
-            if let destination = segue.destination as? TeamCreateController {
-                if let leaderName = self.characterName?.text {
-                    destination.leaderName = leaderName
-                }
-            }
+            var DestViewController = segue.destination as! UINavigationController
+            
+            let targetController = DestViewController.topViewController as! TeamCreateController
+            targetController.leaderName = self.characterName?.text
         }
         
         

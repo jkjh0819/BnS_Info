@@ -14,8 +14,6 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     //character name이랑 role이랑 같이 받도록 수정해야 함
     var roles:[String] = []
     
-    let tempNames:[String] = ["리엘 베르디", "쵸쿄파이", "늘빈님", "천상극법", "천상원이", "쿠코상", "천화도", "쬬퍄", "암살자꼼이", "힘쎈슈야"]
-    
     var teamLeader:String!
     var teamNumber:String!
     
@@ -54,12 +52,12 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tempNames.count
+        //팀원의 수만큼 리턴
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamCreateCell", for:indexPath)
-        cell.textLabel?.text = tempNames[indexPath.row]
         
         return cell
     }
@@ -86,8 +84,8 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     @IBAction func unwindToMemberSelectView(segue:UIStoryboardSegue) {
         //이 뷰에서 리더랑 던전타입, 팀번호를 넣어주어야 함.
         if let sourceViewController = segue.source as? MemberSettingDetailViewController {
-            self.roles = sourceViewController.roles
-            print(self.roles)
+            //self.roles = sourceViewController.roles
+            //print(self.roles)
         }
     }
     

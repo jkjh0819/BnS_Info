@@ -12,12 +12,24 @@ var character:Character = Character(name:"이름을 입력해주세요")
 
 let namedData = [["1성 구무악", "2성 구무악", "3성 구무악", "4성 구무악", "5성 구무악", "6성 구무악"], ["천독룡", "사안장군", "모순장군", "촉마왕"], ["적패왕"], ["초열검, 혹한검", "초마령", "흑풍마녀"]]
 
+//접근은 dungeonTactic[getDungeonIndex(dType)][row][section]
+let dungeonTactic = [nightTactic, macheonrooTactic, seojaTactic, sosaTactic]
+
+let nightTactic = [nightRole, nightPosition]
+let nightRole = [["탱커", "딜러"], ["탱커","딜러","거미","정화"]]
+let nightPosition:[[String]] = []
+
 let macheonrooTactic = [macheonrooRole, macheonrooPosition]
-
-
 let macheonrooRole = [["탱커","딜러","독배달"],["탱커", "딜러", "내부"], ["탱커","딜러", "리딩", "띄우기"],["탱커", "딜러","발묶", "80격리", "30격리"]]
-
 let macheonrooPosition = [["12","3","6","9"], ["12","5","7"], ["모장군","순장군"], ["12", "5","7"]]
+
+let seojaTactic = [seojaRole, seojaPosition]
+let seojaRole = [["탱커", "쫄", "철주","장판","파멸기"]]
+let seojaPosition = [["중앙"], ["5,11", "1,7"], ["6,8","10,12","2,4"], ["3","9"], ["6,8","10,12","2,4"]]
+
+let sosaTactic = [sosaRole, sosaPosition]
+let sosaRole = [["탱커", "힐러","키퍼","딜러"], ["탱커","딜러"], ["탱커","표적","쫄"]]
+let sosaPosition = [["초열검","혹한검"],["내부","외부"],[]]
 
 func getDungeonName(type:Int) -> String {
     switch type {
@@ -108,6 +120,8 @@ class Dungeon {
 }
 
 class Named {
+    //name은 네임드 이름, party는 몇 파티에 속하는지, role은 역할 ex > 탱커_12시
+    //json에서 받아올 때는 ex > 1파티_탱커_12시와 같은식으로 받아와서 separate하게 됨
     let name:String
     let party:Int
     let role:String

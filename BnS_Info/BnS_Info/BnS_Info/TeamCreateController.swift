@@ -24,7 +24,7 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        leader.text = leaderName
+        leader.text = character.name
     }
     
     override func viewDidLoad() {
@@ -76,6 +76,5 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     // 취소 버튼을 누르거나 
     @IBAction func unwindToTeamCreatView(segue:UIStoryboardSegue) {
-        
     }
 }

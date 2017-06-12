@@ -13,12 +13,11 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
     @IBOutlet weak var tableView: UITableView!
 
     var dType:Int = -1
-    var roles:[String] = ["first","second", "third"]
     
     func changeValue1(sender: UISegmentedControl) {
         print(sender.tag)
         print(sender.titleForSegment(at: sender.selectedSegmentIndex))
-        switch sender.selectedSegmentIndex {
+        /*switch sender.selectedSegmentIndex {
         case 0:
             
             roles[0] = "first role changed"
@@ -30,7 +29,7 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             roles[2] = "third role changed"
         default:
             break
-        }
+        }*/
     }
     
     override func viewDidLoad() {
@@ -57,8 +56,18 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch dType {
+        case 11:
+            return 2
         case 21:
             return 3
+        case 22:
+            return 3
+        case 23:
+            if section == 2 {
+                return 2
+            } else {
+                return 3
+            }
         default:
             return 1
         }
@@ -101,22 +110,6 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             segCon.addTarget(self, action: #selector(changeValue1(sender:)), for: .valueChanged)
             cell.contentView.addSubview(segCon)
         }
-        
-        /*
-        if indexPath.row == 0 {
-            let items = ["first", "second", "third"]
-            let roleSelect = UISegmentedControl(items: items)
-            roleSelect.frame = CGRect(x: 187.5 , y: 5, width: 182.5, height: 34)
-            //roleSelect function added
-            roleSelect.addTarget(self, action: #selector(changeValue1(sender:)), for: .valueChanged)
-            //add Subview
-            cell.contentView.addSubview(roleSelect)
-        } else {
-            let items = ["first", "second", "third","fourth"]
-            let roleSelect = UISegmentedControl(items: items)
-            roleSelect.frame = CGRect(x: 187.5 , y: 5, width: 182.5, height: 34)
-            cell.contentView.addSubview(roleSelect)
-        }*/
         
         return cell
     }
