@@ -90,21 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518933406.115162"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518933406.115162"
+            timestampString = "518937752.800775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
@@ -118,11 +104,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518933406.115162"
+            timestampString = "518937752.800775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186">
+            startingLineNumber = "198"
+            endingLineNumber = "198">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BnS_Info/MemberSettingDetailViewController.swift"
+            timestampString = "518937752.800775"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518933406.115162"
+            timestampString = "518937752.800775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177">
+            startingLineNumber = "185"
+            endingLineNumber = "185">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -162,11 +162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518933406.115162"
+            timestampString = "518937752.800775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141">
+            startingLineNumber = "149"
+            endingLineNumber = "149">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -176,11 +176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518933406.115162"
+            timestampString = "518937752.800775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146">
+            startingLineNumber = "154"
+            endingLineNumber = "154">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -190,11 +190,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSelectViewController.swift"
-            timestampString = "518855979.938559"
+            timestampString = "518937670.754369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,11 +238,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518933406.115162"
+            timestampString = "518937752.800775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,11 +254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518933406.115162"
+            timestampString = "518937752.800775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "MemberSettingDetailViewController"
             landmarkType = "3">
          </BreakpointContent>

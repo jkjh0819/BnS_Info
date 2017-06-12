@@ -25,7 +25,8 @@ let macheonrooPosition = [["12","3","6","9"], ["12","5","7"], ["모장군","순�
 
 let seojaTactic = [seojaRole, seojaPosition]
 let seojaRole = [["탱커", "쫄", "철주","장판","파멸기"]]
-let seojaPosition = [["중앙"], ["5,11", "1,7"], ["6,8","10,12","2,4"], ["3","9"], ["6,8","10,12","2,4"]]
+let seojaPosition:[[String]] = []
+    //[["중앙"], ["5,11", "1,7"], ["6,8","10,12","2,4"], ["3","9"], ["6,8","10,12","2,4"]]
 
 let sosaTactic = [sosaRole, sosaPosition]
 let sosaRole = [["탱커", "힐러","키퍼","딜러"], ["탱커","딜러"], ["탱커","표적","쫄"]]
@@ -77,12 +78,7 @@ func getDungeonIndex(type:Int) -> Int {
 }
 
 func getDungenRole(type:Int, section:Int, index:Int) -> [String] {
-    switch type {
-    case 21:
-        return macheonrooTactic[index][section]
-    default:
-        return []
-    }
+    return dungeonTactic[getDungeonIndex(type: type)][index][section]
 }
 
 class Character {

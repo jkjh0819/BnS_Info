@@ -12,7 +12,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
 
     var dType:Int!
     //character name이랑 role이랑 같이 받도록 수정해야 함
-    var roles:[String] = []
+    
     
     var teamLeader:String!
     var teamNumber:String!
@@ -27,6 +27,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(_ animated: Bool) {
         let getName = getDungeonName(type: dType)
         dungeonName.text = getName
+        //여기에 서버 set team 생성하는 부분 추가
     }
     
     override func viewDidLoad() {
