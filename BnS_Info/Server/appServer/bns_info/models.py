@@ -22,7 +22,7 @@ class Dungeon(models.Model):
 
 class Tactics(models.Model):
     teamNum = models.TextField(db_column='teamNum', blank=True, null=True)  # Field name made lowercase.
-    role = models.IntegerField(blank=True, null=True)
+    role = models.TextField(blank=True, null=True)
     cName = models.TextField(db_column='cName', blank=True, null=True)  # Field name made lowercase.
     dType = models.IntegerField(db_column='dType', blank=True, null=True)  # Field name made lowercase.
     id = models.IntegerField(blank=True, primary_key=True)
