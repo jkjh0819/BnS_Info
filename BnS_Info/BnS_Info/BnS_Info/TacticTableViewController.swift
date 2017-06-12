@@ -13,34 +13,19 @@ class TacticTableViewController: UITableViewController {
     
     @IBOutlet weak var characterName: UILabel!
     
-    @IBAction func CheckTeam(_ sender: Any) {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        // 캐릭터당 팀 갯수 만큼 row만들도록 수정해야 함.
         return character.teams.count
     }
 
@@ -51,24 +36,6 @@ class TacticTableViewController: UITableViewController {
         return cell
     }
     
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
-    // MARK: - Navigation
-    // 로그인 화면의 unwind 목적지가 될 곳
     @IBAction func unwindToTacticTable(segue:UIStoryboardSegue) {
         
         if let sourceViewController = segue.source as? LoginViewController {
@@ -82,7 +49,7 @@ class TacticTableViewController: UITableViewController {
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
-                    //teamNumber:dungeonType
+                    
                     let result = response.result.value as! NSDictionary
                     let keys = result.allKeys
                     for key in keys {
@@ -106,24 +73,44 @@ class TacticTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToTacticTable2(segue:UIStoryboardSegue) {
-        print("return to main")
-        // 팀 생성 후 돌아오는 액션
+        Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(_):
+                if response.result.value != nil{
+                    
+                    let result = response.result.value as! NSDictionary
+                    let keys = result.allKeys
+                    for key in keys {
+                        let teamNumber = key as! String
+                        let values = result.value(forKey: teamNumber) as! NSArray
+                        let dungeonData = Dungeon(dungeonType: values[0] as! Int)
+                        let teamData = Team(teamNumber: String(teamNumber)!, dungeon: dungeonData, teamLeader: values[1] as! String)
+                        character.teams.append(teamData)
+                    }
+                }
+                break
+                
+            case .failure(_):
+                print(response.result.error)
+                break
+                
+            }
+            self.tableView.reloadData()
+        }
+
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "DetailSegue" {
             if let destination = segue.destination as? DetailTableViewController {
                 if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
                    Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.characterName.text, "teamNum": character.teams[selectedIndex].teamNumber, "dType": character.teams[selectedIndex].dungeon.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
                         switch(response.result) {
                         case .success(_):
-                            //namedNum: tactic 받아오므로 파싱해서 데이터에집어넣어주어야 함.
-                            if response.result.value != nil{
-                                print(response.result.value)
-                            }
+                            //5. 선택한 팀의 리더와 현재 캐릭터 이름이 같을 경우에는 팀 멤버 불러오는 부분 호출
+                            //그렇지 않은 경우는
+                            //4. Server: getRoleNum 호출, 파싱해서 데이터 추가
+                            //dungeon에 있는 named에 넣어주면됨
                             break
                             
                         case .failure(_):
@@ -133,9 +120,10 @@ class TacticTableViewController: UITableViewController {
                         }
                     }
                     
-                    destination.teamLeader = characterName.text
+                    destination.teamNumber = character.teams[selectedIndex].teamNumber
+                    destination.cName = characterName.text
+                    destination.teamLeader = character.teams[selectedIndex].teamLeader
                     destination.dungeonData = character.teams[selectedIndex].dungeon
-                    destination.dungeonName = character.teams[selectedIndex].dungeon.dungeonName
                 }
             }
         }

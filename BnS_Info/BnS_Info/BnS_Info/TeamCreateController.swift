@@ -11,12 +11,11 @@ import UIKit
 class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var leaderName:String!
-    var dType:Int = 11
+    var dType:Int = 0
     
     @IBOutlet weak var leader: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    //11, 21, 22, 23 - "밤의 바람평야","검은 마천루","서자의 안식처", "소용돌이 사원"
     var pickerData = ["밤의 바람평야","검은 마천루","서자의 안식처", "소용돌이 사원"]
     
     @IBAction func BackToMain(_ sender: Any) {
@@ -29,7 +28,6 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -37,7 +35,6 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -56,25 +53,16 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.dType = getDungeonType(Name: pickerData[row])
     }
     
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        //다음 뷰로 던전 이름 넘기기
+        
         if segue.identifier == "MemberSelect" {
-            //set Team호출하고 teamNumber 받아서 함께 넘겨줘야함
+            //1. Server : setTeam 호출
+            //reponse로 teamNumber 받아서 destination.teamNumber에 넣어주면 됨
             if let destination = segue.destination as?
                 MemberSelectViewController {
                 destination.dType = self.dType
                 destination.teamLeader = self.leader.text
             }
         }
-    }
-    
-    // 취소 버튼을 누르거나 
-    @IBAction func unwindToTeamCreatView(segue:UIStoryboardSegue) {
     }
 }

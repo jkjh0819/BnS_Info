@@ -173,7 +173,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberSettingCell" id="15e-yh-oyd" customClass="MemberSettingTableViewCell" customModule="BnS_Info" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="15e-yh-oyd" id="Zn1-fv-8DP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -257,7 +257,6 @@
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
-                                        <action selector="CheckTeam:" destination="xVo-WL-3sg" eventType="touchUpInside" id="Iok-oD-Was"/>
                                         <segue destination="CHH-Ix-evg" kind="presentation" identifier="TeamCreate" id="WTK-m8-XbZ"/>
                                     </connections>
                                 </button>

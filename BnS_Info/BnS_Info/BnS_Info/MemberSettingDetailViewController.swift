@@ -14,11 +14,10 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
     @IBOutlet weak var cName: UITextField!
 
     var dType:Int = -1
-    
-    //namedNum:[roles]  roles > party, role, position
     var roles:[Int:[String:String]] = [:]
     
     func changeValue(sender: UISegmentedControl) {
+        //section은 10의자리, row는 1의 자리
         let section = sender.tag/10
         let row = sender.tag%10
         
@@ -38,19 +37,6 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             }
         }
         
-        /*switch sender.selectedSegmentIndex {
-        case 0:
-            
-            roles[0] = "first role changed"
-            break
-        case 1:
-            roles[1] = "second role changed"
-            break
-        case 2:
-            roles[2] = "third role changed"
-        default:
-            break
-        }*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,12 +62,10 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
         
         tableView.dataSource = self
         tableView.delegate = self
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -120,7 +104,7 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             items = ["1","2","3","4"]
             let segCon = UISegmentedControl(items: items)
             segCon.frame = CGRect(x: Int(cell.frame.maxX)-5-46*items.count, y: 5, width: 46 * items.count, height: 34)
-            let font = UIFont.systemFont(ofSize: 16)
+            let font = UIFont.systemFont(ofSize: 15)
             segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
             
             segCon.selectedSegmentIndex = 0
@@ -142,12 +126,12 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             }
             let segCon = UISegmentedControl(items: items)
             segCon.frame = CGRect(x: Int(cell.frame.maxX)-5-46*items.count, y: 5, width: 46 * items.count, height: 34)
-            let font = UIFont.systemFont(ofSize: 16)
+            let font = UIFont.systemFont(ofSize: 15)
             segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
             
             segCon.selectedSegmentIndex = 0
             
-            //section은 10의자리, row는 1의 자리
+            
             segCon.tag = indexPath.section*10 + indexPath.row
             segCon.addTarget(self, action: #selector(changeValue(sender:)), for: .valueChanged)
             cell.contentView.addSubview(segCon)
@@ -156,12 +140,11 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             let items = getDungenRole(type: dType, section:indexPath.section, index: indexPath.row-1)
             let segCon = UISegmentedControl(items: items)
             segCon.frame = CGRect(x: Int(cell.frame.maxX)-5-46*items.count, y: 5, width: 46 * items.count, height: 34)
-            let font = UIFont.systemFont(ofSize: 16)
+            let font = UIFont.systemFont(ofSize: 15)
             segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
             
             segCon.selectedSegmentIndex = 0
             
-            //section은 10의자리, row는 1의 자리
             segCon.tag = indexPath.section*10 + indexPath.row
             segCon.addTarget(self, action: #selector(changeValue(sender:)), for: .valueChanged)
             cell.contentView.addSubview(segCon)
@@ -169,18 +152,4 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
         
         return cell
     }
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

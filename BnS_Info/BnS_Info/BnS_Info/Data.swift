@@ -32,6 +32,8 @@ let sosaTactic = [sosaRole, sosaPosition]
 let sosaRole = [["탱커", "힐러","키퍼","딜러"], ["탱커","딜러"], ["탱커","표적","쫄"]]
 let sosaPosition = [["초열검","혹한검"],["내부","외부"],[]]
 
+
+//11, 21, 22, 23 - "밤의 바람평야","검은 마천루","서자의 안식처", "소용돌이 사원"
 func getDungeonName(type:Int) -> String {
     switch type {
     case 11:
@@ -104,7 +106,7 @@ class Team {
 }
 
 class Dungeon {
-    //11, 21, 22, 23 - "밤의 바람평야","검은 마천루","서자의 안식처", "소용돌이 사원"
+    
     let dungeonType:Int
     let dungeonName:String
     var nameds:[Named] = []
@@ -119,12 +121,10 @@ class Named {
     //name은 네임드 이름, party는 몇 파티에 속하는지, role은 역할 ex > 탱커_12시
     //json에서 받아올 때는 ex > 1파티_탱커_12시와 같은식으로 받아와서 separate하게 됨
     let name:String
-    let party:Int
-    let role:String
+    let role:[String:String]
     
-    init(dType:Int,index:Int , party:Int, role:String) {
+    init(dType:Int,index:Int , role:[String:String]) {
         self.name = namedData[getDungeonIndex(type: dType)][index]
-        self.party = party
         self.role = role
     }
 }
