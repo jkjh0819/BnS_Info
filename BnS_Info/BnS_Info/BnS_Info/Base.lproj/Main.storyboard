@@ -157,7 +157,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="SBj-eH-afc" kind="unwind" identifier="didSegueToMemberSelect" customClass="Unwind_right" customModule="BnS_Info" customModuleProvider="target" unwindAction="unwindToMemberSelectViewWithSegue:" id="Dx7-6i-7Kv"/>
+                                    <segue destination="SBj-eH-afc" kind="unwind" unwindAction="unwindToMemberSelectViewWithSegue:" id="WUG-Ja-vt8"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QyZ-lk-2kZ">
@@ -173,7 +173,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberSettingCell" id="15e-yh-oyd" customClass="MemberSettingTableViewCell" customModule="BnS_Info" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="15e-yh-oyd" id="Zn1-fv-8DP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -216,7 +216,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEO-v3-beF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="SBj-eH-afc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4106" y="-1093"/>
+            <point key="canvasLocation" x="4104.8000000000002" y="-1093.4032983508246"/>
         </scene>
         <!--메인 화면-->
         <scene sceneID="6Xq-Z1-MPD">

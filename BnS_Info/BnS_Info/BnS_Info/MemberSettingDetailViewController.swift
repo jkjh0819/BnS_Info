@@ -26,7 +26,6 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             switch row {
             case 0:
                 roles[section]?["party"] = data
-                print(roles[section])
                 break
             case 1:
                 roles[section]?["role"] = data
@@ -38,8 +37,6 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
                 break
             }
         }
-        
-        print(roles[section]?["role"])
         
         /*switch sender.selectedSegmentIndex {
         case 0:
@@ -57,8 +54,21 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        roles[1] = ["party":"", "role":"", "position":""]
-        print(roles[1])
+        //role dictionary 초기화
+        for idx in 0...namedData[getDungeonIndex(type: dType)].count-1 {
+            if dType == 11 {
+                if idx >= 3 {
+                    roles[idx] = ["party":"1","role":getDungenRole(type: dType, section: 1, index: 0)[0]]
+                } else {
+                    roles[idx] = ["party":"1","role":getDungenRole(type: dType, section: 0, index: 0)[0]]
+                }
+                
+            } else if dType == 22 {
+                roles[idx] = ["party":"1","role":getDungenRole(type: dType, section: idx, index: 0)[0]]
+            } else {
+                roles[idx] = ["party":"1","role":getDungenRole(type: dType, section: idx, index: 0)[0], "position":getDungenRole(type: dType, section: idx, index: 1)[0]]
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -75,7 +85,6 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print(getDungeonIndex(type: dType))
         return namedData[getDungeonIndex(type: dType)].count
     }
     
@@ -86,11 +95,7 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch dType {
         case 11:
-            if section < 3 {
-                return 1
-            } else {
-                return 2
-            }
+            return 2
         case 21:
             return 3
         case 22:

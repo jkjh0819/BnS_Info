@@ -106,6 +106,7 @@ class TacticTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToTacticTable2(segue:UIStoryboardSegue) {
+        print("return to main")
         // 팀 생성 후 돌아오는 액션
     }
     

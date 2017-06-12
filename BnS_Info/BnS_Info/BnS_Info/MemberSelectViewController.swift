@@ -11,8 +11,8 @@ import UIKit
 class MemberSelectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var dType:Int!
-    //character name이랑 role이랑 같이 받도록 수정해야 함
-    var members:[String:[String]] = [:]
+    
+    var members:[String] = []
     
     var teamLeader:String!
     var teamNumber:String!
@@ -54,13 +54,26 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //팀원의 수만큼 리턴
-        return 2
+        return members.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamCreateCell", for:indexPath)
-        
+        cell.textLabel?.text = members[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .normal, title: "delete") { action, index in
+            //self.isEditing = false
+            //여기서 그냥 데이터 딜리트 해버리면 됨.
+            self.members.remove(at: indexPath.row)
+            self.tableView.reloadData()
+        }
+        delete.backgroundColor = UIColor.red
+        return [delete]
+        
     }
     
     
@@ -71,7 +84,6 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "rightSegue" {
-            //set Team호출하고 teamNumber 받아서 함께 넘겨줘야함
             if let destination = segue.destination as?
                 MemberSettingDetailViewController {
                 destination.dType = self.dType
@@ -83,15 +95,14 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
 
     //팀원 추가하고 테이블 셀 리로드
     @IBAction func unwindToMemberSelectView(segue:UIStoryboardSegue) {
-        //이 뷰에서 리더랑 던전타입, 팀번호를 넣어주어야 함.
+        
+        //여기서 서버에 리더랑 던전타입, 팀번호를 넣어주어야 함.
         if let sourceViewController = segue.source as? MemberSettingDetailViewController {
-
-            //self.roles = sourceViewController.roles
-            //print(self.roles)
+            if let newMember = sourceViewController.cName.text {
+                
+                members.append(newMember)
+            }
+            self.tableView.reloadData()
         }
-    }
-    
-    @IBAction func unwindToMemberSelectViewCancel(segue:UIStoryboardSegue) {
-        //role 생성 취소
     }
 }

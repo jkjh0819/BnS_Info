@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518939758.924175"
+            timestampString = "518941377.605977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225">
+            startingLineNumber = "230"
+            endingLineNumber = "230">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518939758.924175"
+            timestampString = "518941377.605977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233">
+            startingLineNumber = "238"
+            endingLineNumber = "238">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -118,11 +118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518939758.924175"
+            timestampString = "518941377.605977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229">
+            startingLineNumber = "234"
+            endingLineNumber = "234">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518939758.924175"
+            timestampString = "518941377.605977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220">
+            startingLineNumber = "225"
+            endingLineNumber = "225">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -162,25 +162,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518939758.924175"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518939758.924175"
+            timestampString = "518941377.605977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
             endingLineNumber = "189">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BnS_Info/MemberSettingDetailViewController.swift"
+            timestampString = "518941377.605977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -238,11 +238,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518939758.924175"
+            timestampString = "518941377.605977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,11 +254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnS_Info/MemberSettingDetailViewController.swift"
-            timestampString = "518939758.924175"
+            timestampString = "518941377.605977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "MemberSettingDetailViewController"
             landmarkType = "3">
          </BreakpointContent>
