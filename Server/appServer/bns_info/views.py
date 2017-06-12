@@ -54,6 +54,8 @@ def setTeam(request):
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
+		retValue = {}
+
 		Leader = receivedData['teamLeader']
 		DungeonType = receivedData['dType']
 
@@ -64,7 +66,9 @@ def setTeam(request):
 			teamNum=teamNumber,
 			dType=DungeonType)
 
-		return HttpResponse(True)
+		retValue['teamNumber'] = teamNumber
+
+		return JsonResponse(retValue)
 
 #팀 멤버 추가
 def setTeamMember(request):
@@ -79,17 +83,18 @@ def setTeamMember(request):
 		teamNumber = receivedData['teamNumber']
 		cRole = receivedData['role']
 		DungeonType = receivedData['dType']
+		namedNumber = receivedData['namedNum']
 
 		newRole = Tactics.objects.create(cName=characterName,
 			teamNum=teamNumber,
 			role=cRole,
 			dType=DungeonType,
-			namedNum=None)
+			namedNum=namedNumber)
 
 		return HttpResponse(True)
 
 #팀 멤버 삭제
-def removeTeamMemer(request):
+def removeTeamMember(request):
 	if request.method != 'POST':
 		return HttpResponse(False)
 
@@ -122,6 +127,25 @@ def modifyRole(request):
 		Tactics.objects.filter(teamNum=teamNumber, cName=characterName, namedNum=namedNumber, dType=DungeonType).update(role=newRole)
 
 		return HttpResponse(True)
+
+#팀 멤버 목록 받아오기
+def getMemberList(request):
+	if request.method != 'POST':
+		return HttpResponse(False)
+
+	else:
+		data = request.body.decode("utf-8")
+		receivedData = json.loads(data)
+
+		receivedTeamNum = receivedData['teamNum']
+		retValue = {}
+
+		character = Character.objects.filter(teamNum=receivedTeamNum)
+		for i in range(0, character.count()):
+			retValue[i] = character[i].name
+
+		return JsonResponse(retValue)
+
 
 
 
