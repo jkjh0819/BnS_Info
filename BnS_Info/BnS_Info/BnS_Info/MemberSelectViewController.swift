@@ -12,7 +12,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
 
     var dType:Int!
     //character name이랑 role이랑 같이 받도록 수정해야 함
-    
+    var members:[String:[String]] = [:]
     
     var teamLeader:String!
     var teamNumber:String!
@@ -85,6 +85,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     @IBAction func unwindToMemberSelectView(segue:UIStoryboardSegue) {
         //이 뷰에서 리더랑 던전타입, 팀번호를 넣어주어야 함.
         if let sourceViewController = segue.source as? MemberSettingDetailViewController {
+
             //self.roles = sourceViewController.roles
             //print(self.roles)
         }

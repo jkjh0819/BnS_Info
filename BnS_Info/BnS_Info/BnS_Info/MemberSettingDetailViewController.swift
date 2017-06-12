@@ -11,12 +11,36 @@ import UIKit
 class MemberSettingDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var cName: UITextField!
 
     var dType:Int = -1
     
+    //namedNum:[roles]  roles > party, role, position
+    var roles:[Int:[String:String]] = [:]
+    
     func changeValue(sender: UISegmentedControl) {
-        print(sender.tag)
-        print(sender.titleForSegment(at: sender.selectedSegmentIndex))
+        let section = sender.tag/10
+        let row = sender.tag%10
+        
+        if let data = sender.titleForSegment(at: sender.selectedSegmentIndex) {
+            switch row {
+            case 0:
+                roles[section]?["party"] = data
+                print(roles[section])
+                break
+            case 1:
+                roles[section]?["role"] = data
+                break
+            case 2:
+                roles[section]?["position"] = data
+                break
+            default:
+                break
+            }
+        }
+        
+        print(roles[section]?["role"])
+        
         /*switch sender.selectedSegmentIndex {
         case 0:
             
@@ -30,6 +54,11 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
         default:
             break
         }*/
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        roles[1] = ["party":"", "role":"", "position":""]
+        print(roles[1])
     }
     
     override func viewDidLoad() {
@@ -86,12 +115,10 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             items = ["1","2","3","4"]
             let segCon = UISegmentedControl(items: items)
             segCon.frame = CGRect(x: Int(cell.frame.maxX)-5-46*items.count, y: 5, width: 46 * items.count, height: 34)
-            
-            
             let font = UIFont.systemFont(ofSize: 16)
             segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
             
-            
+            segCon.selectedSegmentIndex = 0
             segCon.tag = indexPath.section*10 + indexPath.row
             segCon.addTarget(self, action: #selector(changeValue(sender:)), for: .valueChanged)
             cell.contentView.addSubview(segCon)
@@ -110,6 +137,11 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             }
             let segCon = UISegmentedControl(items: items)
             segCon.frame = CGRect(x: Int(cell.frame.maxX)-5-46*items.count, y: 5, width: 46 * items.count, height: 34)
+            let font = UIFont.systemFont(ofSize: 16)
+            segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+            
+            segCon.selectedSegmentIndex = 0
+            
             //section은 10의자리, row는 1의 자리
             segCon.tag = indexPath.section*10 + indexPath.row
             segCon.addTarget(self, action: #selector(changeValue(sender:)), for: .valueChanged)
@@ -119,6 +151,11 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             let items = getDungenRole(type: dType, section:indexPath.section, index: indexPath.row-1)
             let segCon = UISegmentedControl(items: items)
             segCon.frame = CGRect(x: Int(cell.frame.maxX)-5-46*items.count, y: 5, width: 46 * items.count, height: 34)
+            let font = UIFont.systemFont(ofSize: 16)
+            segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+            
+            segCon.selectedSegmentIndex = 0
+            
             //section은 10의자리, row는 1의 자리
             segCon.tag = indexPath.section*10 + indexPath.row
             segCon.addTarget(self, action: #selector(changeValue(sender:)), for: .valueChanged)

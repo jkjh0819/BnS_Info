@@ -209,6 +209,7 @@
                         <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="cName" destination="QyZ-lk-2kZ" id="hsZ-XV-Esa"/>
                         <outlet property="tableView" destination="QN2-Og-2lA" id="Qz5-1z-g3E"/>
                     </connections>
                 </viewController>
