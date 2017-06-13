@@ -45,7 +45,7 @@ def getRoleNum(request):
 
 		return JsonResponse(role, safe=False)
 
-#팀 생성
+#팀 추가, 삭제
 def Team(request):
 	if request.method == 'POST':
 		data = request.body.decode("utf-8")
@@ -82,12 +82,9 @@ def Team(request):
 	else:
 		return HttpResponse(False)
 
-#팀 멤버 추가
-def setTeamMember(request):
-	if request.method != 'POST':
-		return HttpResponse(False)
-
-	else:
+#멤버 추가, 삭제
+def Member(request):
+	if request.method == 'POST':
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
@@ -108,14 +105,7 @@ def setTeamMember(request):
 			dType=DungeonType,
 			namedNum=namedNumber)
 
-		return HttpResponse(True)
-
-#팀 멤버 삭제
-def removeTeamMember(request):
-	if request.method != 'POST':
-		return HttpResponse(False)
-
-	else:
+	elif request.method == 'DELETE':
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
@@ -126,6 +116,9 @@ def removeTeamMember(request):
 		Tactics.objects.filter(teamNum=teamNumber, cName=characterName).delete()
 
 		return HttpResponse(True)
+
+	else:
+		return HttpResponse(False)
 
 #멤버 역할 수정
 def modifyRole(request):
