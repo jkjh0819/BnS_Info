@@ -64,7 +64,7 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
                 "dType": self.dType
             ] as [String : Any]
             print(params)
-            
+            var teamNum:String!
             Alamofire.request(
                 "http://127.0.0.1:8000/newTeam/",
                 method: .post,
@@ -79,15 +79,17 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
                     print("success")
                     if response.result.value != nil {
                         let result = response.result.value as! [String:String]
-                        if let destination = segue.destination as?
-                            MemberSelectViewController {
-                            print("dest correct")
-                            print(self.dType, result["teamNumber"])
-                            destination.dType = self.dType
-                            destination.teamLeader = self.leader.text
-                            destination.teamNumber = result["teamNumber"]
-                        }
+                        teamNum = result["teamNumber"]
                     }
+            }
+            
+            
+                if let destination = segue.destination as?
+                    MemberSelectViewController {
+                    print("dest correct")
+                    destination.dType = self.dType
+                    destination.teamLeader = self.leader.text
+                    destination.teamNumber = teamNum
             }
         }
     }
