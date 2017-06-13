@@ -165,16 +165,15 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
                         encoding: JSONEncoding.default,
                         headers: nil).responseJSON { response in
                             guard response.result.isSuccess else {
-                                print(response.result.error)
+                                print("error")
                                 return
                             }
                             
                             if response.result.value != nil {
-                                print(response.result.value)
+                                print("success")
                             }
-                            
-                            
                     }
+                    usleep(100000)
                 }
                 members.append(newMember)
             }
