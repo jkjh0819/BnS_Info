@@ -110,6 +110,7 @@ def removeTeamMember(request):
 		teamNumber = receivedData['teamNumber']
 
 		Character.objects.filter(teamNum=teamNumber, name=characterName).delete()
+		Tactics.objects.filter(teamNum=teamNumber, cName=characterName).delete()
 
 		return HttpResponse(True)
 
