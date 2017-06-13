@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'^login/', views.login),
     url(r'^requestRole/', views.getRoleNum),
-    url(r'^newTeam/', views.setTeam),
+    url(r'^Team/', views.Team),
     url(r'^addMember/', views.setTeamMember),
     url(r'^removeMember/', views.removeTeamMember),
     url(r'^modifyRole/', views.modifyRole),
