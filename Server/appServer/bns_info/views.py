@@ -61,14 +61,14 @@ def setTeam(request):
 
 		hashKey = str(Leader) + str(DungeonType) + str(time.time())
 		teamNumber = hashlib.md5(hashKey.encode("utf-8")).hexdigest()
-
+		print(teamNumber)
 		newTeam = Team.objects.create(teamLeader=Leader,
 			teamNum=teamNumber,
 			dType=DungeonType)
-
+                
 		retValue['teamNumber'] = teamNumber
-
-		return JsonResponse(retValue)
+		print(retValue)
+		return JsonResponse(retValue, safe=False)
 
 #팀 멤버 추가
 def setTeamMember(request):
