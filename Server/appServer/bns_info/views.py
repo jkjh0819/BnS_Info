@@ -106,6 +106,8 @@ def Member(request):
 			dType=DungeonType,
 			namedNum=namedNumber)
 
+		return HttpResponse(True)
+
 	elif request.method == 'DELETE':
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
