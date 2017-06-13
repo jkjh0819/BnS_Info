@@ -11,7 +11,7 @@ import UIKit
 class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var leaderName:String!
-    var dType:Int = 0
+    var dType:Int = 11
     
     @IBOutlet weak var leader: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
