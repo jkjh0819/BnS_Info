@@ -26,6 +26,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print(dType)
         let getName = getDungeonName(type: dType)
         dungeonName.text = getName
     }
@@ -64,6 +65,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
         let delete = UITableViewRowAction(style: .normal, title: "delete") { action, index in
             
             //3. Server : removeTeamMember호출
+<<<<<<< HEAD
             let params = [
                 "characterName": self.members[indexPath.row],
                 "teamNumber": self.teamNumber
@@ -87,6 +89,9 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
                     
             }
 
+=======
+            print(self.members[indexPath.row])
+>>>>>>> 175f1e8a660f63d676ec00681330bbcd0df696c6
             self.members.remove(at: indexPath.row)
             self.tableView.reloadData()
         }

@@ -12,13 +12,13 @@ class ConquestTableViewController: UITableViewController {
     
 let dungeonNames = ["밤의 바람평야", "검은 마천루", "서자의 안식처", "소용돌이 사원"]
 let conquestUrls = [
-                    [],
-                    [["천독룡","전체공략","conquest1","http://bns.plaync.com/board/job/warlock/article/5895798"]],
-                    [["적패왕","전체공략","","http://bns.plaync.com/board/job/warlock/article/7051249"]],
-                    [["초열검, 혹한검", "기공사시점", "","http://bns.plaync.com/board/job/forcemaster/article/6641201"],
-                     ["초마령","전체공략","","http://bns.plaync.com/board/job/warlock/article/6793129"]]
+                    [["구무악","전체공략","gumuak","http://bns.power.plaync.com/wiki/밤의%2B바람평야%2B공략"]],
+                    [["천독룡","전체공략","cheondongnyong","http://bns.plaync.com/board/job/warlock/article/5895798"]],
+                    [["적패왕","전체공략","jeokpaewang","http://bns.plaync.com/board/job/warlock/article/7051249"]],
+                    [["초열검, 혹한검", "기공사시점", "choyeolandhokan","http://bns.plaync.com/board/job/forcemaster/article/6641201"],
+                     ["초마령","전체공략","chomaryeong","http://bns.plaync.com/board/job/warlock/article/6793129"]]
                    ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "공략 보기"
@@ -60,6 +60,6 @@ let conquestUrls = [
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 60
     }
 }
