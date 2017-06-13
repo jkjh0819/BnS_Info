@@ -30,7 +30,7 @@ let seojaPosition:[[String]] = []
 
 let sosaTactic = [sosaRole, sosaPosition]
 let sosaRole = [["탱커", "힐러","키퍼","딜러"], ["탱커","딜러"], ["탱커","표적","쫄"]]
-let sosaPosition = [["초열검","혹한검"],["내부","외부"],[]]
+let sosaPosition = [["초열검","혹한검"],["내부","외부"],[""]]
 
 
 //11, 21, 22, 23 - "밤의 바람평야","검은 마천루","서자의 안식처", "소용돌이 사원"
