@@ -39,7 +39,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
             ] as [String : Any]
         
         Alamofire.request(
-            "http://127.0.0.1:8000/newTeam/",
+            "http://127.0.0.1:8000/Team/",
             method: .post,
             parameters: params,
             encoding: JSONEncoding.default,
@@ -99,8 +99,8 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
             ]
             
             Alamofire.request(
-                "http://127.0.0.1:8000/removeMember/",
-                method: .post,
+                "http://127.0.0.1:8000/Member/",
+                method: .delete,
                 parameters: params,
                 encoding: JSONEncoding.default,
                 headers: nil).responseJSON { response in
@@ -159,7 +159,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
                         ] as [String : Any]
                     
                     Alamofire.request(
-                        "http://127.0.0.1:8000/addMember/",
+                        "http://127.0.0.1:8000/Member/",
                         method: .post,
                         parameters: params,
                         encoding: JSONEncoding.default,

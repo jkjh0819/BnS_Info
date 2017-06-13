@@ -46,7 +46,7 @@ def getRoleNum(request):
 		return JsonResponse(role, safe=False)
 
 #팀 추가, 삭제
-def Team(request):
+def TeamManagement(request):
 	if request.method == 'POST':
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
@@ -58,10 +58,11 @@ def Team(request):
 
 		hashKey = str(Leader) + str(DungeonType) + str(time.time())
 		teamNumber = hashlib.md5(hashKey.encode("utf-8")).hexdigest()
-		print(teamNumber)
+
 		newTeam = Team.objects.create(teamLeader=Leader,
 			teamNum=teamNumber,
-			dType=DungeonType)
+			dType=DungeonType
+		)
                 
 		retValue['teamNumber'] = teamNumber
 
