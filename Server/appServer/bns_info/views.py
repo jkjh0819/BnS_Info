@@ -79,17 +79,19 @@ def setTeamMember(request):
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
-		characterName = receivedData['characterName']
-		teamNumber = receivedData['teamNumber']
-		cRole = receivedData['role']
-		DungeonType = receivedData['dType']
-		namedNumber = receivedData['namedNum']
+		for k in receivedData.keys():
+			temp = receivedData['k']
+			characterName = temp['characterName']
+			teamNumber = temp['teamNumber']
+			cRole = temp['role']
+			DungeonType = temp['dType']
+			namedNumber = temp['namedNum']
 
-		newRole = Tactics.objects.create(cName=characterName,
-			teamNum=teamNumber,
-			role=cRole,
-			dType=DungeonType,
-			namedNum=namedNumber)
+			newRole = Tactics.objects.create(cName=characterName,
+				teamNum=teamNumber,
+				role=cRole,
+				dType=DungeonType,
+				namedNum=namedNumber)
 
 		return HttpResponse(True)
 
@@ -105,7 +107,7 @@ def removeTeamMember(request):
 		characterName = receivedData['characterName']
 		teamNumber = receivedData['teamNumber']
 
-		Character.objects.filter(teamNum=teamNumber).delete()
+		Character.objects.filter(teamNum=teamNumber, name=characterName).delete()
 
 		return HttpResponse(True)
 
