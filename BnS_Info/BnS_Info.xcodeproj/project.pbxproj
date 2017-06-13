@@ -170,7 +170,9 @@
 				1A4E40511EBB218D00D47A93 /* ViewController.swift */,
 				1A4E40531EBB218D00D47A93 /* Main.storyboard */,
 				1A594C661EED25F10013985C /* ConquestTableViewCell.swift */,
+				47B62C141EC59F4200D7405D /* ConquestTableViewController.swift */,
 				1A190FD01EE941D800D18427 /* MemberSettingTableViewCell.swift */,
+				4733C1C61EE14DB40089460D /* MemberSettingDetailViewController.swift */,
 				1A5315D81EE00DE800F2CC28 /* MemberSelectViewController.swift */,
 				4716C5581EDFF4FA00FE5476 /* LoginView.storyboard */,
 				1AB90AD61ECEDB3100B7AE04 /* LoginViewController.swift */,
@@ -181,9 +183,7 @@
 				1A4E40581EBB218D00D47A93 /* LaunchScreen.storyboard */,
 				1A4E405B1EBB218D00D47A93 /* Info.plist */,
 				1A2E04A01EC2EEFC006DAB4E /* DetailTableViewController.swift */,
-				47B62C141EC59F4200D7405D /* ConquestTableViewController.swift */,
 				479902D41ED6D17A009DCBF4 /* Segues.swift */,
-				4733C1C61EE14DB40089460D /* MemberSettingDetailViewController.swift */,
 			);
 			path = BnS_Info;
 			sourceTree = "<group>";

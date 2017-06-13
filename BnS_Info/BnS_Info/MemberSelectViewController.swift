@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MemberSelectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -63,6 +64,29 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
         let delete = UITableViewRowAction(style: .normal, title: "delete") { action, index in
             
             //3. Server : removeTeamMember호출
+            let params = [
+                "characterName": self.members[indexPath.row],
+                "teamNumber": self.teamNumber
+            ]
+            
+            Alamofire.request(
+                "http://127.0.0.1:8000/removeMember/",
+                method: .post,
+                parameters: params,
+                encoding: JSONEncoding.default,
+                headers: nil).responseJSON { response in
+                    guard response.result.isSuccess else {
+                        print(response.result.error)
+                        return
+                    }
+                    
+                    if response.result.value != nil {
+                        print(response.result.value)
+                    }
+                    
+                    
+            }
+
             self.members.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
@@ -88,6 +112,41 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
                 //2. Server : setTeamMember호출
                 //teamNumber, newMember(cName), dType 넘김
                 //role은 sourceViewController.roles 순회하면서 각 named 당 파티_역할_위치 로 string변환해서 넘김
+                let keys = sourceViewController.roles.keys
+            
+                for k in keys {
+                    let roles = sourceViewController.roles[k]?.keys
+                    var role:String = ""
+                    for r in roles!{
+                        role += (sourceViewController.roles[k]?[r])! + "_"
+                    }
+                    print(k,role)
+                    let params = [
+                        "characterName": newMember,
+                        "teamNumber": self.teamNumber,
+                        "dType": self.dType,
+                        "namedNum": k,
+                        "role" : role
+                        ] as [String : Any]
+                    
+                    Alamofire.request(
+                        "http://127.0.0.1:8000/addMember/",
+                        method: .post,
+                        parameters: params,
+                        encoding: JSONEncoding.default,
+                        headers: nil).responseJSON { response in
+                            guard response.result.isSuccess else {
+                                print(response.result.error)
+                                return
+                            }
+                            
+                            if response.result.value != nil {
+                                print(response.result.value)
+                            }
+                            
+                            
+                    }
+                }
                 members.append(newMember)
             }
             self.tableView.reloadData()

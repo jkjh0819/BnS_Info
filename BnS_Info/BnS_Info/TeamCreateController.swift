@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -53,15 +54,40 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.dType = getDungeonType(Name: pickerData[row])
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "MemberSelect" {
             //1. Server : setTeam 호출
             //reponse로 teamNumber 받아서 destination.teamNumber에 넣어주면 됨
-            if let destination = segue.destination as?
-                MemberSelectViewController {
-                destination.dType = self.dType
-                destination.teamLeader = self.leader.text
+            let params = [
+                "teamLeader": self.leaderName,
+                "dType": self.dType
+            ] as [String : Any]
+            print(params)
+            
+            Alamofire.request(
+                "http://127.0.0.1:8000/newTeam/",
+                method: .post,
+                parameters: params,
+                encoding: JSONEncoding.default,
+                headers: nil).responseJSON { response in
+                    guard response.result.isSuccess else {
+                        print("error!")
+                        print(response.result.error)
+                        return
+                    }
+                    print("success")
+                    if response.result.value != nil {
+                        let result = response.result.value as! [String:String]
+                        if let destination = segue.destination as?
+                            MemberSelectViewController {
+                            print("dest correct")
+                            print(self.dType, result["teamNumber"])
+                            destination.dType = self.dType
+                            destination.teamLeader = self.leader.text
+                            destination.teamNumber = result["teamNumber"]
+                        }
+                    }
             }
         }
     }

@@ -79,19 +79,17 @@ def setTeamMember(request):
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
-		for k in receivedData.keys():
-			temp = receivedData['k']
-			characterName = temp['characterName']
-			teamNumber = temp['teamNumber']
-			cRole = temp['role']
-			DungeonType = temp['dType']
-			namedNumber = temp['namedNum']
+		characterName = receivedData['characterName']
+		teamNumber = receivedData['teamNumber']
+		cRole = receivedData['role']
+		DungeonType = receivedData['dType']
+		namedNumber = receivedData['namedNum']
 
-			newRole = Tactics.objects.create(cName=characterName,
-				teamNum=teamNumber,
-				role=cRole,
-				dType=DungeonType,
-				namedNum=namedNumber)
+		newRole = Tactics.objects.create(cName=characterName,
+			teamNum=teamNumber,
+			role=cRole,
+			dType=DungeonType,
+			namedNum=namedNumber)
 
 		return HttpResponse(True)
 
