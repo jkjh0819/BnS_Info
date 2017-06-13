@@ -67,7 +67,6 @@ def setTeam(request):
 			dType=DungeonType)
                 
 		retValue['teamNumber'] = teamNumber
-		print(retValue)
 		return JsonResponse(retValue, safe=False)
 
 #팀 멤버 추가
@@ -85,7 +84,12 @@ def setTeamMember(request):
 		DungeonType = receivedData['dType']
 		namedNumber = receivedData['namedNum']
 
-		newRole = Tactics.objects.create(cName=characterName,
+		newCharacter = Character.objects.update_or_create(
+			name=characterName,
+			teamNum=teamNumber)
+
+		newRole = Tactics.objects.create(
+			cName=characterName,
 			teamNum=teamNumber,
 			role=cRole,
 			dType=DungeonType,

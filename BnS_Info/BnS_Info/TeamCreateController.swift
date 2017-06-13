@@ -60,38 +60,6 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
         if segue.identifier == "MemberSelect" {
             //1. Server : setTeam 호출
             //reponse로 teamNumber 받아서 destination.teamNumber에 넣어주면 됨
-            
-            /*let params = [
-                "teamLeader": leaderName,
-                "dType": self.dType
-                ] as [String : Any]
-            
-            print(params)
-            Alamofire.request(
-                "http://127.0.0.1:8000/newTeam/",
-                method: .post,
-                parameters: params,
-                encoding: JSONEncoding.default,
-                headers: nil).responseJSON { response in
-                
-                    switch(response.result) {
-                    case .success(_):
-                        if response.result.value != nil{
-                            let result = response.result.value as! [String:String]
-                            self.teamNumber = result["teamNumber"]
-                            print(self.teamNumber)
-                            
-                        }
-                        break
-                        
-                    case .failure(_):
-                        print(response.result.error)
-                        break
-                        
-                    }
-                   
-            }*/
-            
             if let destination = segue.destination as?
                 MemberSelectViewController {
                 destination.dType = self.dType
