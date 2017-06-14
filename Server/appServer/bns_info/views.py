@@ -44,7 +44,7 @@ def getRoleNum(request):
 
 		tactics = Tactics.objects.filter(teamNum=receivedData['teamNum'], cName=receivedData['characterName'], dType=receivedData['dType'])
 		for i in range(0, tactics.count()):
-			retValue[i] = tactics[i].role
+			retValue[tactics[i].namedNum] = tactics[i].role
 
 		return JsonResponse(retValue, safe=False)
 
@@ -140,8 +140,10 @@ def modifyRole(request):
 		DungeonType = receivedData['dType']
 		newRole = receivedData['role']
 		namedNumber = receivedData['namedNumber']
+		prevName = receivedData['prevName']
 
-		Tactics.objects.filter(teamNum=teamNumber, cName=characterName, namedNum=namedNumber, dType=DungeonType).update(role=newRole)
+		Tactics.objects.filter(teamNum=teamNumber, cName=prevName, namedNum=namedNumber, dType=DungeonType).update(cName=characterName,role=newRole)
+		Character.objects.filter(teamNum=teamNumber, name=prevName).update(name=characterName)
 
 		return HttpResponse(True)
 

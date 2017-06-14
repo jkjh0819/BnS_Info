@@ -1,22 +1,28 @@
 //
-//  MemberSettingDetailViewController.swift
+//  MemberChangeViewController.swift
 //  BnS_Info
 //
-//  Created by 표영권 on 2017. 6. 2..
+//  Created by Jihye Jegal on 2017. 6. 15..
 //  Copyright © 2017년 Jihye Jegal. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 
-class MemberSettingDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MemberChangeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cName: UITextField!
-
+    
     var dType:Int = -1
     var roles:[Int:[String:String]] = [:]
+    var nameText:String!
+    var teamNum:String!
+    var loaded:Bool = false
     
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     func changeValue(sender: UISegmentedControl) {
         //section은 10의자리, row는 1의 자리
         let section = sender.tag/10
@@ -40,33 +46,47 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        //role dictionary 초기화
-       
-            for idx in 0...namedData[getDungeonIndex(type: dType)].count-1 {
-                if dType == 11 {
-                    if idx >= 3 {
-                        roles[idx] = ["party":"1","role":getDungenRole(type: dType, section: 1, index: 0)[0]]
-                    } else {
-                        roles[idx] = ["party":"1","role":getDungenRole(type: dType, section: 0, index: 0)[0]]
+    func getRole(completion:@escaping (_ result:String) -> Void)
+    {
+        Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.cName.text , "teamNum": self.teamNum, "dType": self.dType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            switch(response.result) {
+            case .success(_):
+                let result = response.result.value as! NSDictionary
+                for k in result.allKeys {
+                    if let namedNumber = Int(k as! String) {
+                    
+                    let roleStr = result[k] as! String
+                    var tRole:[String:String] = [:]
+                    for temp in roleStr.components(separatedBy: "_") {
+                        if temp.contains(":") {
+                            tRole[temp.components(separatedBy: ":")[0]] = temp.components(separatedBy: ":")[1]
+                        }
                     }
-                
-                } else if dType == 22 {
-                    roles[idx] = ["party":"1","role":getDungenRole(type: dType, section: idx, index: 0)[0]]
-                } else {
-                    roles[idx] = ["party":"1","role":getDungenRole(type: dType, section: idx, index: 0)[0], "position":getDungenRole(type: dType, section: idx, index: 1)[0]]
+                    self.roles[namedNumber] = tRole
+                    }
+                    
                 }
+                self.loaded = true
+                completion("Success")
+                self.tableView.reloadData()
+                
+            case .failure(_):
+                completion("Fail")
             }
-    
+        }
+        
     }
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cName.text = nameText
+        getRole() { (result) in }
         tableView.dataSource = self
         tableView.delegate = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -98,12 +118,9 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
         }
     }
     
-    
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:MemberSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MemberSettingCell", for:indexPath) as! MemberSettingTableViewCell
-    
+        
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
@@ -122,7 +139,14 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             let font = UIFont.systemFont(ofSize: 15)
             segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
             
-            segCon.selectedSegmentIndex = 0
+            if loaded {
+                print(roles[indexPath.section]?["party"])
+                segCon.selectedSegmentIndex = Int((roles[indexPath.section]?["party"])!)! - 1
+            } else {
+                segCon.selectedSegmentIndex = 0
+            }
+            
+            
             segCon.tag = indexPath.section*10 + indexPath.row
             segCon.addTarget(self, action: #selector(changeValue(sender:)), for: .valueChanged)
             cell.contentView.addSubview(segCon)
@@ -132,7 +156,7 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             role.frame = CGRect(x: 18, y: 11, width: 174, height: 21)
             role.text = "역할"
             cell.contentView.addSubview(role)
-           
+            
             if dType == 11 {
                 if indexPath.section >= 3 {
                     items = getDungenRole(type: dType, section: 1, index: indexPath.row-1)
@@ -148,7 +172,11 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             let font = UIFont.systemFont(ofSize: 14)
             segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
             
-            segCon.selectedSegmentIndex = 0
+            if loaded {
+                segCon.selectedSegmentIndex = getDungeonRoleIdx(type: self.dType, section: indexPath.section, index: indexPath.row, title: (roles[indexPath.section]?["role"])!)
+            } else {
+                segCon.selectedSegmentIndex = 0
+            }
             
             
             segCon.tag = indexPath.section*10 + indexPath.row
@@ -166,7 +194,11 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             let font = UIFont.systemFont(ofSize: 14)
             segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
             
-            segCon.selectedSegmentIndex = 0
+            if loaded {
+                segCon.selectedSegmentIndex = getDungeonRoleIdx(type: self.dType, section: indexPath.section, index: indexPath.row, title: (roles[indexPath.section]?["position"])!)
+            } else {
+                segCon.selectedSegmentIndex = 0
+            }
             
             segCon.tag = indexPath.section*10 + indexPath.row
             segCon.addTarget(self, action: #selector(changeValue(sender:)), for: .valueChanged)
@@ -175,4 +207,5 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
         
         return cell
     }
+
 }

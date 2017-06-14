@@ -83,6 +83,17 @@ func getDungenRole(type:Int, section:Int, index:Int) -> [String] {
     return dungeonTactic[getDungeonIndex(type: type)][index][section]
 }
 
+func getDungeonRoleIdx(type:Int, section:Int, index:Int, title:String) -> Int {
+    if type == 11 {
+        if section > 3 {
+            return dungeonTactic[getDungeonIndex(type: type)][index-1][1].index(of: title)!
+        } else {
+            return dungeonTactic[getDungeonIndex(type: type)][index-1][0].index(of: title)!
+        }
+    }
+    return dungeonTactic[getDungeonIndex(type: type)][index-1][section].index(of: title)!
+}
+
 func getTeamIndex(teamNumber:String) -> Int {
     for i in 0...character.teams.count {
         if character.teams[i].teamNumber == teamNumber {
@@ -130,10 +141,12 @@ class Named {
     //name은 네임드 이름, party는 몇 파티에 속하는지, role은 역할 ex > 탱커_12시
     //json에서 받아올 때는 ex > 1파티_탱커_12시와 같은식으로 받아와서 separate하게 됨
     let name:String
+    let namedIdx:Int
     let role:[String:String]
     
     init(dType:Int,index:Int , role:[String:String]) {
         self.name = namedData[getDungeonIndex(type: dType)][index]
+        self.namedIdx = index
         self.role = role
     }
 }

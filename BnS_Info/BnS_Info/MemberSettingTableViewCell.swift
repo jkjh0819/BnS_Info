@@ -10,8 +10,6 @@ import UIKit
 
 class MemberSettingTableViewCell: UITableViewCell {
 
-    
-    @IBOutlet weak var role: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +21,4 @@ class MemberSettingTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

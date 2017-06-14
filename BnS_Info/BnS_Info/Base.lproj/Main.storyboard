@@ -225,25 +225,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="15e-yh-oyd" id="Zn1-fv-8DP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GON-h3-Z8K">
-                                                    <rect key="frame" x="18" y="11" width="174" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="174" id="I8A-he-INI"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="GON-h3-Z8K" firstAttribute="leading" secondItem="Zn1-fv-8DP" secondAttribute="leadingMargin" constant="10" id="62I-7d-bqr"/>
-                                                <constraint firstItem="GON-h3-Z8K" firstAttribute="centerY" secondItem="Zn1-fv-8DP" secondAttribute="centerY" id="7TI-Ve-7su"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="role" destination="GON-h3-Z8K" id="Nzw-N8-9Yc"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -590,10 +572,10 @@
             </objects>
             <point key="canvasLocation" x="-662" y="-1093"/>
         </scene>
-        <!--Member Setting Detail View Controller-->
+        <!--Member Change View Controller-->
         <scene sceneID="FR9-dk-JcC">
             <objects>
-                <viewController id="ht1-np-NJ3" customClass="MemberSettingDetailViewController" customModule="BnS_Info" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ht1-np-NJ3" customClass="MemberChangeViewController" customModule="BnS_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="act-Ea-ZVb"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ew-gd-f4X"/>
@@ -637,7 +619,7 @@
                                     <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="HNL-fK-jAy" kind="unwind" unwindAction="unwindToDetailTableViewCancelWithSegue:" id="qdj-O2-leI"/>
+                                    <action selector="cancel:" destination="ht1-np-NJ3" eventType="touchUpInside" id="l6A-TY-5gx"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="a5x-y0-JcI">
@@ -677,7 +659,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="a5x-y0-JcI" id="wW8-sG-cly"/>
+                        <outlet property="cName" destination="dAV-ep-0TV" id="CnI-CY-s4U"/>
+                        <outlet property="tableView" destination="a5x-y0-JcI" id="hwe-MX-W02"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whI-eX-FCE" userLabel="First Responder" sceneMemberID="firstResponder"/>

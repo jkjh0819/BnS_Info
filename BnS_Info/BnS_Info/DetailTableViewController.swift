@@ -41,35 +41,12 @@ class DetailTableViewController: UITableViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = dungeonData?.dungeonName
         if self.teamLeader == self.cName {
             getMemberList() { (result) in
-                print(result)
                 self.tableView.reloadData()
-            }
-        } else {
-            Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.cName , "teamNum": self.teamNumber, "dType": self.dungeonData.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-                switch(response.result) {
-                case .success(_):
-                    if response.result.value != nil{
-                        
-                        let result = response.result.value as! NSDictionary
-                        let keys = result.allKeys
-                        for k in keys {
-                            print(k)
-                            print(result[k] as! String)
-                        }
-                    }
-                    break
-                    
-                case .failure(_):
-                    print(response.result.error)
-                    break
-                    
-                }
             }
         }
     }
@@ -82,7 +59,7 @@ class DetailTableViewController: UITableViewController {
         if teamLeader == cName {
             return 1
         }
-        return 4
+        return dungeonData.nameds.count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -110,15 +87,15 @@ class DetailTableViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "파티"
-                cell.detailTextLabel?.text = dungeonData.nameds[indexPath.row].role["파티"]
+                cell.detailTextLabel?.text = dungeonData.nameds[indexPath.row].role["party"]
                 break
             case 1:
                 cell.textLabel?.text = "역할"
-                cell.detailTextLabel?.text = dungeonData.nameds[indexPath.row].role["역할"]
+                cell.detailTextLabel?.text = dungeonData.nameds[indexPath.row].role["role"]
                 break
             case 2:
                 cell.textLabel?.text = "위치"
-                cell.detailTextLabel?.text = dungeonData.nameds[indexPath.row].role["위치"]
+                cell.detailTextLabel?.text = dungeonData.nameds[indexPath.row].role["position"]
                 break
             default:
                 break
@@ -130,8 +107,8 @@ class DetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if teamLeader == cName {
-        let change = UITableViewRowAction(style: .normal, title: "change") { action, index in
             let cell = tableView.cellForRow(at: indexPath)
+            let change = UITableViewRowAction(style: .normal, title: "change") { action, index in
             self.performSegue(withIdentifier: "change", sender: cell)
         }
         change.backgroundColor = UIColor.orange
@@ -183,8 +160,10 @@ class DetailTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
             delete.backgroundColor = UIColor.red
-            print(delete)
-            return [delete, change]
+            if cell?.textLabel?.text != self.teamLeader {
+              return [delete, change]
+            }
+            return [delete]
         }
         return nil
     }
@@ -197,16 +176,53 @@ class DetailTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-    
         if segue.identifier == "change" {
-            //6. Server : getRoleNum 호출
-            //destination에 role부분에 대입
-            print("change")
+            if let destination = segue.destination as? MemberChangeViewController {
+                if let selectedIndex = tableView.indexPath(for: sender as! UITableViewCell)?.row {
+                    destination.dType = dungeonData.dungeonType
+                    destination.nameText = members[selectedIndex]
+                    destination.teamNum = self.teamNumber
+                }
+            }
         }
     }
     
     @IBAction func unwindToDetailTableView(segue:UIStoryboardSegue) {
-        if let sourceViewController = segue.source as? MemberSettingDetailViewController {
+        if let sourceViewController = segue.source as? MemberChangeViewController {
+            if let changedMember = sourceViewController.cName.text {
+                let keys = sourceViewController.roles.keys
+                
+                for k in keys {
+                    let roles = sourceViewController.roles[k]?.keys
+                    var role:String = ""
+                    for r in roles!{
+                        role += r+":"
+                        role += (sourceViewController.roles[k]?[r])! + "_"
+                    }
+                    let params = [
+                        "prevName" : sourceViewController.nameText,
+                        "characterName": changedMember,
+                        "teamNum": self.teamNumber,
+                        "dType": self.dungeonData.dungeonType,
+                        "namedNumber": k,
+                        "role" : role
+                        ] as [String : Any]
+                    
+                    Alamofire.request(
+                        "http://127.0.0.1:8000/modifyRole/",
+                        method: .post,
+                        parameters: params,
+                        encoding: JSONEncoding.default,
+                        headers: nil).responseJSON { response in
+                            guard response.result.isSuccess else {
+                                return
+                            }
+                    }
+                    usleep(100000)
+                }
+                members[members.index(of: sourceViewController.nameText)!] = changedMember
+            }
+            self.tableView.reloadData()
         }
     }
 }

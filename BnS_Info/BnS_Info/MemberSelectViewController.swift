@@ -170,7 +170,6 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
                         role += r+":"
                         role += (sourceViewController.roles[k]?[r])! + "_"
                     }
-                    print(k,role)
                     let params = [
                         "characterName": newMember,
                         "teamNumber": self.teamNumber,
