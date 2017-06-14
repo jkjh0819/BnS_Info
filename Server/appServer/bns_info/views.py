@@ -40,10 +40,13 @@ def getRoleNum(request):
 		data = request.body.decode("utf-8")
 		receivedData = json.loads(data)
 
-		tactics = Tactics.objects.get(teamNum=receivedData['teamNum'], cName=receivedData['characterName'], dType=receivedData['dType'])
-		role = {tactics.namedNum : tactics.role}
+		retValue = {}
 
-		return JsonResponse(role, safe=False)
+		tactics = Tactics.objects.filter(teamNum=receivedData['teamNum'], cName=receivedData['characterName'], dType=receivedData['dType'])
+		for i in range(0, tactics.count()):
+			retValue[i] = tactics[i].role
+
+		return JsonResponse(retValue, safe=False)
 
 #팀 추가, 삭제
 def TeamManagement(request):
