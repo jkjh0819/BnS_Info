@@ -17,6 +17,11 @@ class TacticTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -49,6 +54,7 @@ class TacticTableViewController: UITableViewController {
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
+                    character.teams.removeAll()
                     
                     let result = response.result.value as! NSDictionary
                     let keys = result.allKeys
@@ -77,7 +83,7 @@ class TacticTableViewController: UITableViewController {
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
-                    
+                    character.teams.removeAll()
                     let result = response.result.value as! NSDictionary
                     let keys = result.allKeys
                     for key in keys {
@@ -104,30 +110,14 @@ class TacticTableViewController: UITableViewController {
         if segue.identifier == "DetailSegue" {
             if let destination = segue.destination as? DetailTableViewController {
                 if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
-                   Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.characterName.text, "teamNum": character.teams[selectedIndex].teamNumber, "dType": character.teams[selectedIndex].dungeon.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
-                        switch(response.result) {
-                        case .success(_):
-                            //5. 선택한 팀의 리더와 현재 캐릭터 이름이 같을 경우에는 팀 멤버 불러오는 부분 호출
-                            //그렇지 않은 경우는
-                            //4. Server: getRoleNum 호출, 파싱해서 데이터 추가
-                            //dungeon에 있는 named에 넣어주면됨
-                            break
-                            
-                        case .failure(_):
-                            print(response.result.error)
-                            break
-                            
-                        }
-                    }
-                    
                     destination.teamNumber = character.teams[selectedIndex].teamNumber
                     destination.cName = characterName.text
                     destination.teamLeader = character.teams[selectedIndex].teamLeader
                     destination.dungeonData = character.teams[selectedIndex].dungeon
+                    }
                 }
             }
-        }
-        
+    
         if segue.identifier == "TeamCreate" {
             var DestViewController = segue.destination as! UINavigationController
             

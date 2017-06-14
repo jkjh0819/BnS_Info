@@ -13,7 +13,6 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     var leaderName:String!
     var dType:Int = 11
-    var teamNumber:String!
     
     @IBOutlet weak var leader: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
@@ -58,14 +57,10 @@ class TeamCreateController: UIViewController, UIPickerViewDelegate, UIPickerView
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "MemberSelect" {
-            //1. Server : setTeam 호출
-            //reponse로 teamNumber 받아서 destination.teamNumber에 넣어주면 됨
             if let destination = segue.destination as?
                 MemberSelectViewController {
                 destination.dType = self.dType
                 destination.teamLeader = self.leader.text
-                //print(self.teamNumber)
-                //destination.teamNumber = self.teamNumber
             }
         }
     }

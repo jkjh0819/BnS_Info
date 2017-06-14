@@ -25,6 +25,31 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
         return 3
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if(self.isMovingFromParentViewController){
+            let params = [
+                "teamNum": self.teamNumber
+                ]
+        
+            Alamofire.request(
+                "http://127.0.0.1:8000/Team/",
+                method: .delete,
+                parameters: params,
+                encoding: JSONEncoding.default,
+                headers: nil).responseJSON { response in
+                    switch(response.result) {
+                    case .success(_):
+                        print("delete team success")
+                        break
+                    case .failure(_):
+                        print(response.result.error)
+                            break
+                }
+            }
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         let getName = getDungeonName(type: dType)
         dungeonName.text = getName
@@ -92,7 +117,6 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
         
         let delete = UITableViewRowAction(style: .normal, title: "delete") { action, index in
             
-            //3. Server : removeTeamMember호출
             let params = [
                 "characterName": self.members[indexPath.row],
                 "teamNumber": self.teamNumber
@@ -137,9 +161,6 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
     
         if let sourceViewController = segue.source as? MemberSettingDetailViewController {
             if let newMember = sourceViewController.cName.text {
-                //2. Server : setTeamMember호출
-                //teamNumber, newMember(cName), dType 넘김
-                //role은 sourceViewController.roles 순회하면서 각 named 당 파티_역할_위치 로 string변환해서 넘김
                 let keys = sourceViewController.roles.keys
             
                 for k in keys {
@@ -165,12 +186,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
                         encoding: JSONEncoding.default,
                         headers: nil).responseJSON { response in
                             guard response.result.isSuccess else {
-                                print("error")
                                 return
-                            }
-                            
-                            if response.result.value != nil {
-                                print("success")
                             }
                     }
                     usleep(100000)
@@ -180,4 +196,7 @@ class MemberSelectViewController: UIViewController, UITableViewDataSource, UITab
             self.tableView.reloadData()
         }
     }
+    
 }
+    
+

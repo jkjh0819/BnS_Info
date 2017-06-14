@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class DetailTableViewController: UITableViewController {
 
@@ -17,18 +18,67 @@ class DetailTableViewController: UITableViewController {
     var teamNumber:String!
     var teamLeader:String!
     var cName:String!
-    var members:[String]!
+    var members:[String] = []
+    
+
+    func getMemberList(completion:@escaping (_ result:NSDictionary) -> Void)
+    {
+        Alamofire.request("http://127.0.0.1:8000/getMemberList/", method: .post, parameters:
+            ["teamNum": teamNumber], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(_):
+                    let result = response.result.value as! NSDictionary
+                    for k in result.allKeys {
+                        if let newMember = result[k] {
+                            self.members.append(newMember as! String)
+                        }
+                    }
+                    completion(response.result.value as! NSDictionary)
+                    
+                case .failure(_):
+                    completion(response.result.error as! NSDictionary)
+                }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = dungeonData?.dungeonName
+        if self.teamLeader == self.cName {
+            getMemberList() { (result) in
+                print(result)
+                self.tableView.reloadData()
+            }
+        } else {
+            Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.cName , "teamNum": self.teamNumber, "dType": self.dungeonData.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+                switch(response.result) {
+                case .success(_):
+                    if response.result.value != nil{
+                        
+                        let result = response.result.value as! NSDictionary
+                        let keys = result.allKeys
+                        for k in keys {
+                            print(k)
+                            print(result[k] as! String)
+                        }
+                    }
+                    break
+                    
+                case .failure(_):
+                    print(response.result.error)
+                    break
+                    
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-       override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if teamLeader == cName {
             return 1
         }
@@ -87,8 +137,48 @@ class DetailTableViewController: UITableViewController {
         change.backgroundColor = UIColor.orange
         
         let delete = UITableViewRowAction(style: .normal, title: "delete") { action, index in
-            //7. Server : removeTeamMember호출
-            self.members.remove(at: indexPath.row)
+            
+            if self.members[indexPath.row] == self.teamLeader {
+                let params = [
+                    "teamNum": self.teamNumber
+                ]
+                
+                Alamofire.request(
+                    "http://127.0.0.1:8000/Team/",
+                    method: .delete,
+                    parameters: params,
+                    encoding: JSONEncoding.default,
+                    headers: nil).responseJSON { response in
+                        switch(response.result) {
+                        case .success(_):
+                            print("delete team success")
+                            break
+                        case .failure(_):
+                            print(response.result.error)
+                            break
+                        }
+                }
+                character.teams.remove(at: getTeamIndex(teamNumber: self.teamNumber))
+                self.members.removeAll()
+            } else {
+                let params = [
+                    "characterName": self.members[indexPath.row],
+                    "teamNumber": self.teamNumber
+                ]
+                
+                Alamofire.request(
+                    "http://127.0.0.1:8000/Member/",
+                    method: .delete,
+                    parameters: params,
+                    encoding: JSONEncoding.default,
+                    headers: nil).responseJSON { response in
+                        guard response.result.isSuccess else {
+                            print(response.result.error)
+                            return
+                        }
+                }
+                self.members.remove(at: indexPath.row)
+            }
 
             self.tableView.reloadData()
         }
@@ -119,10 +209,4 @@ class DetailTableViewController: UITableViewController {
         if let sourceViewController = segue.source as? MemberSettingDetailViewController {
         }
     }
-    
-    @IBAction func unwindToDetailTableViewCancel(segue:UIStoryboardSegue) {
-        if let sourceViewController = segue.source as? MemberSettingDetailViewController {
-        }
-    }
-    
 }

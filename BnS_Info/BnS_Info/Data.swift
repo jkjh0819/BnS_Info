@@ -83,6 +83,15 @@ func getDungenRole(type:Int, section:Int, index:Int) -> [String] {
     return dungeonTactic[getDungeonIndex(type: type)][index][section]
 }
 
+func getTeamIndex(teamNumber:String) -> Int {
+    for i in 0...character.teams.count {
+        if character.teams[i].teamNumber == teamNumber {
+            return i
+        }
+    }
+    return -1
+}
+
 class Character {
     let name:String
     var teams:[Team] = []
