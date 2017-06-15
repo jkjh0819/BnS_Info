@@ -103,6 +103,15 @@ func getTeamIndex(teamNumber:String) -> Int {
     return -1
 }
 
+func getMyRole(namedIdx:Int, Named:[Named]) -> [String:String] {
+    for idx in 0...Named.count {
+        if Named[idx].namedIdx == namedIdx {
+            return Named[idx].role
+        }
+    }
+    return ["":""]
+}
+
 class Character {
     let name:String
     var teams:[Team] = []

@@ -12,7 +12,7 @@ class ConquestTableViewController: UITableViewController {
     
 let dungeonNames = ["밤의 바람평야", "검은 마천루", "서자의 안식처", "소용돌이 사원"]
 let conquestUrls = [
-                    [["구무악","전체공략","gumuak","http://bns.power.plaync.com/wiki/밤의%2B바람평야%2B공략"]],
+                    [["구무악","전체공략","gumuak","http://m.inven.co.kr/board/powerbbs.php?come_idx=2605&l=38825"]],
                     [["천독룡","전체공략","cheondongnyong","http://bns.plaync.com/board/job/warlock/article/5895798"]],
                     [["적패왕","전체공략","jeokpaewang","http://bns.plaync.com/board/job/warlock/article/7051249"]],
                     [["초열검, 혹한검", "기공사시점", "choyeolandhokan","http://bns.plaync.com/board/job/forcemaster/article/6641201"],

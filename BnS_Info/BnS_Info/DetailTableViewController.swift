@@ -23,7 +23,7 @@ class DetailTableViewController: UITableViewController {
 
     func getMemberList(completion:@escaping (_ result:NSDictionary) -> Void)
     {
-        Alamofire.request("http://127.0.0.1:8000/getMemberList/", method: .post, parameters:
+        Alamofire.request("http://211.209.10.187:80/getMemberList/", method: .post, parameters:
             ["teamNum": teamNumber], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
                 switch(response.result) {
                 case .success(_):
@@ -87,15 +87,15 @@ class DetailTableViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "파티"
-                cell.detailTextLabel?.text = dungeonData.nameds[indexPath.row].role["party"]
+                cell.detailTextLabel?.text = getMyRole(namedIdx: indexPath.section, Named: dungeonData.nameds)["party"]
                 break
             case 1:
                 cell.textLabel?.text = "역할"
-                cell.detailTextLabel?.text = dungeonData.nameds[indexPath.row].role["role"]
+                cell.detailTextLabel?.text = getMyRole(namedIdx: indexPath.section, Named: dungeonData.nameds)["role"]
                 break
             case 2:
                 cell.textLabel?.text = "위치"
-                cell.detailTextLabel?.text = dungeonData.nameds[indexPath.row].role["position"]
+                cell.detailTextLabel?.text = getMyRole(namedIdx: indexPath.section, Named: dungeonData.nameds)["position"]
                 break
             default:
                 break
@@ -121,7 +121,7 @@ class DetailTableViewController: UITableViewController {
                 ]
                 
                 Alamofire.request(
-                    "http://127.0.0.1:8000/Team/",
+                    "http://211.209.10.187:80/Team/",
                     method: .delete,
                     parameters: params,
                     encoding: JSONEncoding.default,
@@ -144,7 +144,7 @@ class DetailTableViewController: UITableViewController {
                 ]
                 
                 Alamofire.request(
-                    "http://127.0.0.1:8000/Member/",
+                    "http://211.209.10.187:80/Member/",
                     method: .delete,
                     parameters: params,
                     encoding: JSONEncoding.default,
@@ -209,7 +209,7 @@ class DetailTableViewController: UITableViewController {
                         ] as [String : Any]
                     
                     Alamofire.request(
-                        "http://127.0.0.1:8000/modifyRole/",
+                        "http://211.209.10.187:80/modifyRole/",
                         method: .post,
                         parameters: params,
                         encoding: JSONEncoding.default,

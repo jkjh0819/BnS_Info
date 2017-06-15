@@ -48,7 +48,7 @@ class MemberChangeViewController: UIViewController, UITableViewDataSource, UITab
     
     func getRole(completion:@escaping (_ result:String) -> Void)
     {
-        Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.cName.text , "teamNum": self.teamNum, "dType": self.dType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("http://211.209.10.187:80/requestRole/", method: .post, parameters: ["characterName": self.cName.text , "teamNum": self.teamNum, "dType": self.dType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
                 let result = response.result.value as! NSDictionary

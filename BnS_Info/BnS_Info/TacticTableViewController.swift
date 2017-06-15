@@ -44,7 +44,7 @@ class TacticTableViewController: UITableViewController {
     
     func getRole(idx:Int, completion:@escaping (_ result:String) -> Void)
     {
-        Alamofire.request("http://127.0.0.1:8000/requestRole/", method: .post, parameters: ["characterName": self.characterName.text , "teamNum": character.teams[idx].teamNumber, "dType": character.teams[idx].dungeon.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("http://211.209.10.187:80/requestRole/", method: .post, parameters: ["characterName": self.characterName.text , "teamNum": character.teams[idx].teamNumber, "dType": character.teams[idx].dungeon.dungeonType], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
                 let result = response.result.value as! NSDictionary
@@ -83,7 +83,7 @@ class TacticTableViewController: UITableViewController {
             }
         }
         
-        Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("http://211.209.10.187:80/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
@@ -113,7 +113,7 @@ class TacticTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToTacticTable2(segue:UIStoryboardSegue) {
-        Alamofire.request("http://127.0.0.1:8000/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("http://211.209.10.187:80/login/", method: .post, parameters: ["characterName": self.characterName.text], encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{

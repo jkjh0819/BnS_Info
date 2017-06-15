@@ -23,20 +23,8 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func connectionCheck(completion:@escaping (_ result:Bool) -> Void) {
-        Alamofire.request("http://127.0.0.1:8000/", method: .post, parameters: ["check":"check"], encoding: JSONEncoding.default, headers: nil).responseString { response in
-            print(response.result.value)
-            if response.result.value != nil {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }
-    }
-    
-    
     @IBAction func login(_ sender: Any) {
-        Alamofire.request("http://127.0.0.1:8000/", method: .post, parameters: ["check":"check"], encoding: JSONEncoding.default, headers: nil).responseString { response in
+        Alamofire.request("http://211.209.10.187:80/", method: .post, parameters: ["check":"check"], encoding: JSONEncoding.default, headers: nil).responseString { response in
             switch (response.result) {
             case .success(_):
                 self.performSegue(withIdentifier: "unwindLogin", sender: self)
