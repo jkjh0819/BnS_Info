@@ -21,7 +21,7 @@ let nightPosition:[[String]] = []
 
 let macheonrooTactic = [macheonrooRole, macheonrooPosition]
 let macheonrooRole = [["탱커","딜러","독배달"],["탱커", "딜러", "내부"], ["탱커","딜러", "리딩", "띄우기"],["탱커", "딜러","발묶", "80격리", "30격리"]]
-let macheonrooPosition = [["12","3","6","9"], ["12","5","7"], ["모장군","순장군"], ["12", "5","7"]]
+let macheonrooPosition = [["12시","3시","6시","9시"], ["12시","5시","7시"], ["모장군","순장군"], ["12시", "5시","7시"]]
 
 let seojaTactic = [seojaRole, seojaPosition]
 let seojaRole = [["탱커", "쫄", "철주","장판","파멸기"]]

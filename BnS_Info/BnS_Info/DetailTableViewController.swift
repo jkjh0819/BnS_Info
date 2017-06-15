@@ -73,7 +73,23 @@ class DetailTableViewController: UITableViewController {
         if teamLeader == cName {
             return members.count
         }
-        return 3
+        switch dungeonData.dungeonType {
+        case 11:
+            return 2
+        case 21:
+            return 3
+        case 22:
+            return 2
+        case 23:
+            if section == 2 {
+                return 2
+            } else {
+                return 3
+            }
+        default:
+            return 1
+        }
+
     }
 
     
@@ -112,7 +128,7 @@ class DetailTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "change", sender: cell)
         }
         change.backgroundColor = UIColor.orange
-        
+            
         let delete = UITableViewRowAction(style: .normal, title: "delete") { action, index in
             
             if self.members[indexPath.row] == self.teamLeader {
@@ -160,10 +176,7 @@ class DetailTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
             delete.backgroundColor = UIColor.red
-            if cell?.textLabel?.text != self.teamLeader {
-              return [delete, change]
-            }
-            return [delete]
+            return [delete, change]
         }
         return nil
     }
@@ -190,39 +203,77 @@ class DetailTableViewController: UITableViewController {
     @IBAction func unwindToDetailTableView(segue:UIStoryboardSegue) {
         if let sourceViewController = segue.source as? MemberChangeViewController {
             if let changedMember = sourceViewController.cName.text {
-                let keys = sourceViewController.roles.keys
-                
-                for k in keys {
-                    let roles = sourceViewController.roles[k]?.keys
-                    var role:String = ""
-                    for r in roles!{
-                        role += r+":"
-                        role += (sourceViewController.roles[k]?[r])! + "_"
-                    }
-                    let params = [
-                        "prevName" : sourceViewController.nameText,
-                        "characterName": changedMember,
-                        "teamNum": self.teamNumber,
-                        "dType": self.dungeonData.dungeonType,
-                        "namedNumber": k,
-                        "role" : role
-                        ] as [String : Any]
-                    
-                    Alamofire.request(
-                        "http://211.209.10.187:80/modifyRole/",
-                        method: .post,
-                        parameters: params,
-                        encoding: JSONEncoding.default,
-                        headers: nil).responseJSON { response in
-                            guard response.result.isSuccess else {
-                                return
+                if let prevCName = sourceViewController.nameText {
+                    if prevCName == self.teamLeader && changedMember != prevCName {
+                        var alert = UIAlertView(title: "You are teamLeader", message: "You can't change teamLeader", delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    } else {
+                        let keys = sourceViewController.roles.keys
+                        
+                        for k in keys {
+                            let roles = sourceViewController.roles[k]?.keys
+                            var role:String = ""
+                            for r in roles!{
+                                role += r+":"
+                                role += (sourceViewController.roles[k]?[r])! + "_"
                             }
+                            let params = [
+                                "prevName" : sourceViewController.nameText,
+                                "characterName": changedMember,
+                                "teamNum": self.teamNumber,
+                                "dType": self.dungeonData.dungeonType,
+                                "namedNumber": k,
+                                "role" : role
+                                ] as [String : Any]
+                            
+                            Alamofire.request(
+                                "http://211.209.10.187:80/modifyRole/",
+                                method: .post,
+                                parameters: params,
+                                encoding: JSONEncoding.default,
+                                headers: nil).responseJSON { response in
+                                    guard response.result.isSuccess else {
+                                        return
+                                    }
+                            }
+                            usleep(100000)
+                        }
                     }
-                    usleep(100000)
+                } else {
+                    let keys = sourceViewController.roles.keys
+                    
+                    for k in keys {
+                        let roles = sourceViewController.roles[k]?.keys
+                        var role:String = ""
+                        for r in roles!{
+                            role += r+":"
+                            role += (sourceViewController.roles[k]?[r])! + "_"
+                        }
+                        let params = [
+                            "prevName" : sourceViewController.nameText,
+                            "characterName": changedMember,
+                            "teamNum": self.teamNumber,
+                            "dType": self.dungeonData.dungeonType,
+                            "namedNumber": k,
+                            "role" : role
+                            ] as [String : Any]
+                        
+                        Alamofire.request(
+                            "http://211.209.10.187:80/modifyRole/",
+                            method: .post,
+                            parameters: params,
+                            encoding: JSONEncoding.default,
+                            headers: nil).responseJSON { response in
+                                guard response.result.isSuccess else {
+                                    return
+                                }
+                        }
+                        usleep(100000)
+                    }
+                    members[members.index(of: sourceViewController.nameText)!] = changedMember
                 }
-                members[members.index(of: sourceViewController.nameText)!] = changedMember
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
         }
     }
 }

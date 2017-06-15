@@ -37,7 +37,7 @@ class TacticTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tacticCell", for: indexPath)
-        cell.textLabel?.text = character.teams[indexPath.row].dungeon.dungeonName
+        cell.textLabel?.text = character.teams[indexPath.row].dungeon.dungeonName + " (팀장 : "+character.teams[indexPath.row].teamLeader+")"
         getRole(idx: indexPath.row) { (result) in }
         return cell
     }
@@ -142,7 +142,6 @@ class TacticTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
-            
             if let destination = segue.destination as? DetailTableViewController {
                 if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
                     destination.teamNumber = character.teams[selectedIndex].teamNumber

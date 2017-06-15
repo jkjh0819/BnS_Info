@@ -145,7 +145,7 @@ class MemberSettingDetailViewController: UIViewController, UITableViewDataSource
             }
             let segCon = UISegmentedControl(items: items)
             segCon.frame = CGRect(x: Int(cell.frame.maxX)-5-46*items.count, y: 5, width: 46 * items.count, height: 34)
-            let font = UIFont.systemFont(ofSize: 14)
+            let font = UIFont.systemFont(ofSize: 13)
             segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
             
             segCon.selectedSegmentIndex = 0

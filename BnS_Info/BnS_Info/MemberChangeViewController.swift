@@ -92,6 +92,7 @@ class MemberChangeViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        print("numberofSections")
         return namedData[getDungeonIndex(type: dType)].count
     }
     
@@ -125,6 +126,8 @@ class MemberChangeViewController: UIViewController, UITableViewDataSource, UITab
             subview.removeFromSuperview()
         }
         
+        print(indexPath.section)
+        print(indexPath.row)
         var items:[String]
         
         if indexPath.row == 0 {
@@ -169,7 +172,7 @@ class MemberChangeViewController: UIViewController, UITableViewDataSource, UITab
             }
             let segCon = UISegmentedControl(items: items)
             segCon.frame = CGRect(x: Int(cell.frame.maxX)-5-46*items.count, y: 5, width: 46 * items.count, height: 34)
-            let font = UIFont.systemFont(ofSize: 14)
+            let font = UIFont.systemFont(ofSize: 13)
             segCon.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
             
             if loaded {
