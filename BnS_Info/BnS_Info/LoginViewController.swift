@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "unwindLogin", sender: self)
                 break
             case.failure(_):
-                var alert = UIAlertView(title: "No Server Connection", message: "Please email to jkjh0819@naver.com", delegate: nil, cancelButtonTitle: "OK")
+                var alert = UIAlertView(title: "No Server Connection", message: "Please email to th6424@gmail.com", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 break
             }
